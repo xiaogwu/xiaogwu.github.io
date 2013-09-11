@@ -1,6 +1,7 @@
 ---
 layout: post
-title:  "Second Post"
+title: "Second Post"
+date: 2013-09-11 08:00:00
 categories: blog post test
 ---
 

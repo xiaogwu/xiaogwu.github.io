@@ -1,6 +1,7 @@
 ---
 layout: post
-title:  "Third Post"
+title: "Third Post"
+date: 2013-09-11 09:00:00
 categories: blog post test
 ---
 
