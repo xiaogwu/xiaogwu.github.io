@@ -1,3 +1,5 @@
 name: Starting From Scratch
 markdown: redcarpet
 pygments: true
+permalink: /:year/:month/:day/:title.html
+
