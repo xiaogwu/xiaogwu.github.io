@@ -16,16 +16,29 @@ html, body {
 
 
 body {
-  background-color: #FFF;
-  font: 13.34px Helvetica, Arial, sans-serif;
+  background-color: #ddd;
+  font: 13.34px Helvetica, Arial, freesans, sans-serif;
   font-size: small;
   text-align: center;
+  color: #333;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-size: 100%; }
+  font-size: 1.6em;
+  font-weight: normal;
+  margin: 0;
+}
 
-h1 { margin-bottom: 1em; }
+h1 {
+  margin-bottom: 1em;
+  margin-top: 1.5em;
+}
+
+h2 {
+    font-size: 1.3em;
+    margin-top: 1.5em;
+}
+
 p { margin: 1em 0; }
 
 a         { color: #00a; }
@@ -169,4 +182,50 @@ ul.posts span {
 
 #avatar p img {
   border-radius: 50%;
+}
+
+/*****************************************************************************/
+/*
+/* About
+/*
+/*****************************************************************************/
+.box {
+    position: relative;
+    padding: 50px;
+    margin: 0 auto;
+    background-color: #fff;
+
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+}
+
+.box:before,.box:after {
+    position: absolute;
+    width: 40%;
+    height: 10px;
+    content: ' ';
+    left: 12px;
+    bottom: 12px;
+    background: transparent;
+
+    -webkit-transform: skew(-5deg) rotate(-5deg);
+    -moz-transform: skew(-5deg) rotate(-5deg);
+    -o-transform: skew(-5deg) rotate(-5deg);
+    -ms-transform: skew(-5deg) rotate(-5deg);
+    transform: skew(-5deg) rotate(-5deg);
+
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    z-index: -1;
+}
+
+.box:after {
+    left: auto;
+    right: 12px;
+
+    -webkit-transform: skew(5deg) rotate(5deg);
+    -moz-transform: skew(5deg) rotate(5deg);
+    -o-transform: skew(5deg) rotate(5deg);
+    -ms-transform: skew(5deg) rotate(5deg);
+    transform: skew(5deg) rotate(5deg);
 }
