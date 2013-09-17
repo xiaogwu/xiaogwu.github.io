@@ -229,3 +229,12 @@ ul.posts span {
     -ms-transform: skew(5deg) rotate(5deg);
     transform: skew(5deg) rotate(5deg);
 }
+
+/*****************************************************************************/
+/*
+/* Portfolio
+/*
+/*****************************************************************************/
+#portfolio .project-info {
+    line-height: 10px;
+}
