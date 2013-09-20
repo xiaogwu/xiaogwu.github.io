@@ -59,6 +59,14 @@ ul.posts li {
   line-height: 1.75em;
 }
 
+ul.posts li a {
+  text-decoration: none;
+}
+
+ul.posts li a:hover {
+  text-decoration: underline;
+}
+
 ul.posts span {
   color: #aaa;
   font-family: Monaco, "Courier New", monospace;
@@ -90,11 +98,11 @@ ul.posts span {
 }
 
 .site .header h1.title a {
-  color: #a00;
+  color: rgba(75, 68, 68, 0.8);
 }
 
 .site .header h1.title a:hover {
-  color: #000;
+  color: #999;
 }
 
 .site .header a.extra {
@@ -104,7 +112,7 @@ ul.posts span {
 }
 
 .site .header a.extra:hover {
-  color: #000;
+  color: #666;
 }
 
 .site .meta {
@@ -263,4 +271,16 @@ ul.posts span {
 /*****************************************************************************/
 #portfolio .project-info {
     line-height: 10px;
+}
+
+/*****************************************************************************/
+/*
+/* Projects
+/*
+/*****************************************************************************/
+#projects h2 {
+    margin-bottom: 0.5em;
+}
+#projects ul li {
+    margin-left: 1.2em;
 }
