@@ -138,6 +138,32 @@ ul.posts span {
   border: 0;
 }
 
+.site .footer img.cc {
+  display: inline-block;
+  border: none;
+  margin-left: 2px;
+  width: 1em;
+  height: 1em;
+  opacity: 0.4;
+}
+
+.site .footer p a:hover img.cc {
+    opacity: 1;
+}
+
+.site .footer a {
+  text-decoration: none;
+}
+
+.site .footer a:hover {
+    text-decoration: underline;
+}
+
+.site .footer p {
+    text-align: center;
+    color: #999;
+}
+
 /*****************************************************************************/
 /*
 /* Posts
