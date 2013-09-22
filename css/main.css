@@ -262,15 +262,32 @@ ul.posts span {
 /* About
 /*
 /*****************************************************************************/
-#avatar p {
+#about #avatar p {
   text-align: center;
 }
 
-#avatar p img {
+#about #avatar p img {
   border-radius: 50%;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
   padding: 8px;
 }
+
+#about .links {
+    font-size: 2.5em;
+    margin-top: 1.5em;
+    text-align: center;
+}
+
+#about .links a {
+    margin-right: 0.5em;
+    color: rgba(75, 68, 68, 0.8);
+}
+
+#about .links a:hover {
+    color: #999;
+}
+
+
 
 /*****************************************************************************/
 /*
