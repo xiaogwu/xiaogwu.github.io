@@ -45,33 +45,6 @@ a         { color: #00a; }
 a:hover   { color: #000; }
 a:visited { color: #a0a; }
 
-/*****************************************************************************/
-/*
-/* Home
-/*
-/*****************************************************************************/
-ul.posts {
-  list-style-type: none;
-  margin-bottom: 2em;
-}
-
-ul.posts li {
-  line-height: 1.75em;
-}
-
-ul.posts li a {
-  text-decoration: none;
-}
-
-ul.posts li a:hover {
-  text-decoration: underline;
-}
-
-ul.posts span {
-  color: #aaa;
-  font-family: Monaco, "Courier New", monospace;
-  font-size: 80%;
-}
 
 /*****************************************************************************/
 /*
@@ -122,8 +95,7 @@ ul.posts span {
 .site .footer {
   font-size: 80%;
   color: #666;
-  border-top: 4px solid #eee;
-  margin-top: 2em;
+  border-top: 1px solid rgba(255, 255, 255, 0.6);
   overflow: hidden;
 }
 
@@ -172,57 +144,6 @@ ul.posts span {
     color: #999;
 }
 
-/*****************************************************************************/
-/*
-/* Posts
-/*
-/*****************************************************************************/
-
-/* standard */
-.post pre {
-  border: 1px solid #ddd;
-  background-color: #eef;
-  padding: 0 .4em;
-}
-
-.post ul, .post ol {
-  margin-left: 1.35em;
-}
-
-.post code {
-  border: 1px solid #ddd;
-  background-color: #eef;
-  padding: 0 .2em;
-}
-
-.post pre code {
-  border: none;
-}
-
-/* terminal */
-.post pre.terminal {
-  border: 1px solid #000;
-  background-color: #333;
-  color: #FFF;
-}
-
-.post pre.terminal code {
-  background-color: #333;
-}
-
-#avatar p {
-  text-align: center;
-}
-
-#avatar p img {
-  border-radius: 50%;
-}
-
-/*****************************************************************************/
-/*
-/* About
-/*
-/*****************************************************************************/
 .box {
     position: relative;
     padding: 50px;
@@ -262,6 +183,93 @@ ul.posts span {
     -o-transform: skew(5deg) rotate(5deg);
     -ms-transform: skew(5deg) rotate(5deg);
     transform: skew(5deg) rotate(5deg);
+}
+
+.content {
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(88, 88, 88, 0.3);
+    padding-bottom: 25px
+}
+
+/*****************************************************************************/
+/*
+/* Home & Blog
+/*
+/*****************************************************************************/
+ul.posts {
+  list-style-type: none;
+  margin-bottom: 2em;
+}
+
+ul.posts li {
+  line-height: 1.75em;
+}
+
+ul.posts li a {
+  text-decoration: none;
+}
+
+ul.posts li a:hover {
+  text-decoration: underline;
+}
+
+ul.posts span {
+  color: #aaa;
+  font-family: Monaco, "Courier New", monospace;
+  font-size: 80%;
+}
+
+/*****************************************************************************/
+/*
+/* Posts
+/*
+/*****************************************************************************/
+
+/* standard */
+.post pre {
+  border: 1px solid #ddd;
+  background-color: #eef;
+  padding: 0 .4em;
+}
+
+.post ul, .post ol {
+  margin-left: 1.35em;
+}
+
+.post code {
+  border: 1px solid #ddd;
+  background-color: #eef;
+  padding: 0 .2em;
+}
+
+.post pre code {
+  border: none;
+}
+
+/* terminal */
+.post pre.terminal {
+  border: 1px solid #000;
+  background-color: #333;
+  color: #FFF;
+}
+
+.post pre.terminal code {
+  background-color: #333;
+}
+
+/*****************************************************************************/
+/*
+/* About
+/*
+/*****************************************************************************/
+#avatar p {
+  text-align: center;
+}
+
+#avatar p img {
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+  padding: 8px;
 }
 
 /*****************************************************************************/
