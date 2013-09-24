@@ -11,7 +11,7 @@ happening, you just need to "ping" that app within that hour window.
 
 Recently, [Nathan Bradshaw] showed me a great hack to keep Heroku Apps awake
 with Google Apps Scripts.  Google Apps Script is a JavaScript cloud scripting
-language that can be used to automate tasks using tiggers.
+language that can be used to automate tasks using triggers.
 
 **Inorder to use Google Apps Scripts you first need to have a Google account and
 head over to your Google Drive and create a new script.**
@@ -28,7 +28,8 @@ head over to your Google Drive and create a new script.**
     ```
     ![Code][code]
 4.  Next set the project's trigger by selecting: Resources -> Current project's
-    triggers
+    triggers.  Make sure you select Time-driven, Minutes timer and select the 15
+    minutes or the 30 minutes option.
     ![Project Triggers][project triggers]
 5.  (Optional) If you want to be notified when the trigger fails select the
     "notifications" option and select the email address that you want to receive
@@ -36,6 +37,10 @@ head over to your Google Drive and create a new script.**
 6.  Select the "Save" button and then rename the script to something useful.
     (e.g. ping-appname-heroku)
 7.  Select the "Run" button to make sure the script executes correctly.
+
+So now whenever you go to your Heroku app, it should respond right away without
+that annoying spin-up time that seem to last an eternity especially when you are
+trying to demo your app to a potential employer.
 
 [tweeted]: https://twitter.com/xiaogwu/status/380757001745088512
 [Heroku's blog post]: https://blog.heroku.com/archives/2013/6/20/app_sleeping_on_heroku?mkt_tok=3RkMMJWWfF9wsRonuq%2FPZKXonjHpfsX57O0uWqC%2FlMI%2F0ER3fOvrPUfGjI4ATsNqI%2BSLDwEYGJlv6SgFQrjAMapmyLgLUhE%3D
