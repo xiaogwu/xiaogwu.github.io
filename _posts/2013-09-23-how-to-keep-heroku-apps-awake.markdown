@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How to Keep Heroku Apps Awake with Google Apps Script!"
+title: "How to Keep Heroku Apps Awake with Google Apps Script"
 date: 2013-09-23 21:00:00
 categories: heroku rails google apps script
 ---
