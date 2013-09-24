@@ -234,6 +234,7 @@ ul.posts span {
 
 .post ul, .post ol {
   margin-left: 1.35em;
+  text-align: left;
 }
 
 .post code {
