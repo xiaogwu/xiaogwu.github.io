@@ -263,14 +263,20 @@ ul.posts span {
 /* About
 /*
 /*****************************************************************************/
-#about #avatar p {
-  text-align: center;
-}
+#about #avatar {
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.8);
 
-#about #avatar p img {
-  border-radius: 50%;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
-  padding: 8px;
+    -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+    border-radius: 50%;
+    border-width: 8px;
+    overflow: hidden;
+    height: 200px;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
 }
 
 #about .links {
@@ -287,8 +293,6 @@ ul.posts span {
 #about .links a:hover {
     color: #999;
 }
-
-
 
 /*****************************************************************************/
 /*
