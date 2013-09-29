@@ -294,6 +294,13 @@ ul.posts span {
     color: #999;
 }
 
+#qrcode {
+    margin-left: auto;
+    margin-right: auto;
+    width: 440px;
+    height: 440px;
+}
+
 /*****************************************************************************/
 /*
 /* Portfolio
