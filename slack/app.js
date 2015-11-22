@@ -2,6 +2,7 @@
 
 var App = (function() {
     var coordinates = {};
+    var accessToken;
     var images;
     var imageIds;
 
@@ -69,15 +70,8 @@ var App = (function() {
             '&response_type=token';
     };
 
-    var storeAccessToken = function(hash0) {
-       var hash = hash0.substring(hash0.indexOf('=') + 1);
-
-       if ( sessionStorage.getItem('access_token') === hash ) {
-           return;
-       }
-
-       sessionStorage.setItem('access_token', hash);
-
+    var refreshAccessToken = function(hash0) {
+        accessToken = hash0.substring(hash0.indexOf('=') + 1);
     };
 
     var displayImages = function(response0) {
@@ -279,22 +273,10 @@ var App = (function() {
             authenticateButton.parentNode.removeChild(authenticateButton);
 
             // Refresh Access Token
-            storeAccessToken(window.location.hash);
+            refreshAccessToken(window.location.hash);
             geoLocation(getImagesService);
             addListeners();
-
-            // Cleanup URL and remove access token
-            var url = window.location.toString();
-            var cleanUrl = url.substring(0, url.indexOf('#'));
-            window.history.replaceState({}, document.title, cleanUrl);
-
         } else {
-            if ( sessionStorage.getItem('access_token') ) {
-                // Remove Authenticate button after successful authentication
-                var authenticateButton = document.querySelector('#authenticate-button');
-                authenticateButton.parentNode.removeChild(authenticateButton);
-                geoLocation(getImagesService);
-            }
             geoLocation();
             addListeners();
         }
