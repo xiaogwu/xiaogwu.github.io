@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>
+        Geoloroid - A Slack Coding Exercise
+    </title>
+    <meta name="author" content="xiaogwu">
+    <meta name="description" content="Geolocation Based Instagram Photos Lightbox">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
+    <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16" />
+
+    <link rel="stylesheet" href="css/style.min.css">
+</head>
+
+<body>
+    <header>
+        <h1>Geolaroid</h1>
+    </header>
+    <div class="main">
+        <h2>Instagram photos around</h2>
+        <h2>your current geolocation</h2>
+        <h3 id="coordinates"></h3>
+        <button id="authenticate-button" class="btn">Authenticate</button>
+        <div id="container" class="container"></div>
+        <div id="modal-outer">
+            <div id="modal-image-container">
+                <div id="prev"></div>
+                <div id="next"></div>
+                <div id="close"></div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <a href="http://xiaogwu.com">Built with love by <b>xiaogwu</b></a>
+        <a href="http://mn-ml.cc" target="_blank">Built using Mnml</a>
+    </footer>
+    <script src="app.js"></script>
+</body>
+
+</html>
