@@ -65,7 +65,7 @@ var App = (function() {
         window.location.href =
             'https://instagram.com/oauth/authorize/?' +
             'client_id=5711d67def8e44f2b00de392ed6d3597' +
-            '&redirect_uri=http://xiaogwu.com/slack' +
+            '&redirect_uri=http://xiaogwu.com/slack/' +
             '&response_type=token';
     };
 
