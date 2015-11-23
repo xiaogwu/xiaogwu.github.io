@@ -2,7 +2,6 @@
 
 var App = (function() {
     var coordinates = {};
-    var accessToken;
     var images;
     var imageIds;
 
@@ -70,8 +69,15 @@ var App = (function() {
             '&response_type=token';
     };
 
-    var refreshAccessToken = function(hash0) {
-        accessToken = hash0.substring(hash0.indexOf('=') + 1);
+    var storeAccessToken = function(hash0) {
+       var hash = hash0.substring(hash0.indexOf('=') + 1);
+
+       if ( sessionStorage.getItem('access_token') === hash ) {
+           return;
+       }
+
+       sessionStorage.setItem('access_token', hash);
+
     };
 
     var displayImages = function(response0) {
@@ -265,7 +271,28 @@ var App = (function() {
         }
     };
 
+    var isTouchDevice = function() {
+        var el = document.createElement('div');
+        el.setAttribute('ongesturestart', 'return;');
+        return ( typeof el.ongesturestart == 'function' ) ? true : false
+    };
+
+    var loadCSS = function(url) {
+        var head = document.getElementsByTagName('head')[0];
+        var link = document.createElement('link');
+        link.type = 'text/css';
+        link.rel = 'stylesheet';
+        link.href = url;
+        head.appendChild(link);
+        return link;
+    };
+
     var run = function() {
+        // Detect if we do not a touch device then load hover styling
+        if ( !isTouchDevice() ) {
+            loadCSS('css/hovers.css');
+        }
+
         // Handle authentication redirect
         if (window.location.hash) {
             // Remove Authenticate button after successful authentication
@@ -273,10 +300,22 @@ var App = (function() {
             authenticateButton.parentNode.removeChild(authenticateButton);
 
             // Refresh Access Token
-            refreshAccessToken(window.location.hash);
+            storeAccessToken(window.location.hash);
             geoLocation(getImagesService);
             addListeners();
+
+            // Cleanup URL and remove access token
+            var url = window.location.toString();
+            var cleanUrl = url.substring(0, url.indexOf('#'));
+            window.history.replaceState({}, document.title, cleanUrl);
+
         } else {
+            if ( sessionStorage.getItem('access_token') ) {
+                // Remove Authenticate button after successful authentication
+                var authenticateButton = document.querySelector('#authenticate-button');
+                authenticateButton.parentNode.removeChild(authenticateButton);
+                geoLocation(getImagesService);
+            }
             geoLocation();
             addListeners();
         }
