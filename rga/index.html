@@ -1,0 +1,64 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-csp="" ng-app="mst3k"> <!--<![endif]-->
+
+	<head>
+
+		<base href="/">
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>MST3K - A R/GA Coding Exercise</title>
+		<meta name="description" content="AngularJS MST3K landing page">
+
+		<!-- mobile meta -->
+		<meta name="HandheldFriendly" content="True">
+		<meta name="MobileOptimized" content="320">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch:400,700|Rock+Salt" rel="stylesheet" type="text/css">
+
+		<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16" />
+
+		<!--[if IE]>
+			<link rel="shortcut icon" href="favicon.ico">
+		<![endif]-->
+		<!-- or, set /favicon.ico for IE10 win -->
+		<meta name="msapplication-TileColor" content="#f01d4f">
+
+		<!-- CSS -->
+		<link rel="stylesheet" href="css/style.min.css"/>
+
+	</head>
+
+	<body class="main-wrapper">
+
+		<!--[if lt IE 8]>
+		    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+		<![endif]-->
+
+		<!-- Navigation -->
+		<main-nav></main-nav>
+
+		<!-- Main view for templates -->
+		<div data-ng-view="" class="container"></div>
+
+    <main-footer></main-footer>
+
+	</body>
+
+	<!-- Angular external libraries for application -->
+	<script src="js/angularlibs.js"></script>
+
+	<!-- Angular components -->
+	<script src="js/appcomponents.js"></script>
+
+	<!-- Application sections -->
+	<script src="js/mainapp.js"></script>
+
+	<!-- templates from $templateCache -->
+	<script type="text/javascript" src="js/templates.js"></script>
+
+</html>
