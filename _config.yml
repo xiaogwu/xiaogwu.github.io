@@ -1,4 +1,5 @@
 name: Starting From Scratch
+markdown: kramdown
 highlighter: rouge
 permalink: /:year/:month/:day/:title.html
 
