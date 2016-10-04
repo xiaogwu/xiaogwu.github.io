@@ -28,19 +28,33 @@ h1 {
   padding: 24px 0;
 }
 
+@media (max-width: 425px) {
+  h1 {
+    display: block;
+  }
+
+  .counter {
+    float: none;
+    font-size: inherit;
+    padding: 0;
+    page-break-after: inherit;;
+  }
+}
+
 .count {
   margin-right: 8px;
 }
 
 form {
+  display: flex;
   margin: 16px 0;
 }
 
 input[type=text] {
   border-radius: 5px;
   border: 1px solid #CCC;
+  flex: 5;
   padding: 12px;
-  width: 470px;
 }
 
 input[type=text]:focus {
@@ -52,10 +66,10 @@ input[type=submit] {
   border-radius: 5px;
   border: 1px solid #0A86B7;
   color: white;
-  float: right;
+  flex: 1;
   font-weight: 600;
   height: 44px;
-  width: 90px;
+  margin-left: 12px;
 }
 
 .no-todos {
