@@ -10,7 +10,11 @@ function addTodo(event) {
   var newTodo = newTodoItemInput.value;
   if (newTodo.length > 0) {
     noTodos.classList.add("hidden");
-    createTodo(newTodo);
+    var todoList = newTodo.split(',');
+    console.log(todoList);
+    for (var i = 0; i < todoList.length; i++) {
+      createTodo(todoList[i].trim());
+    }
     form.reset();
   }
 }
