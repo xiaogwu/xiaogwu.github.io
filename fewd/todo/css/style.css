@@ -1,0 +1,91 @@
+* {
+  /*outline: 1px solid red;*/
+}
+
+body {
+  background-color: #F1F0F4;
+}
+
+.content-wrapper {
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 24px;
+}
+
+header {
+  height: 84px;
+}
+
+h1 {
+  display: inline-block;
+  position: relative;
+  top: 4px;
+}
+
+.counter {
+  float: right;
+  font-size: 32px;
+  padding: 24px 0;
+}
+
+.count {
+  margin-right: 8px;
+}
+
+form {
+  margin: 16px 0;
+}
+
+input[type=text] {
+  border-radius: 5px;
+  border: 1px solid #CCC;
+  padding: 12px;
+  width: 470px;
+}
+
+input[type=text]:focus {
+  outline: none;
+}
+
+input[type=submit] {
+  background-color: #049BD7;
+  border-radius: 5px;
+  border: 1px solid #0A86B7;
+  color: white;
+  float: right;
+  font-weight: 600;
+  height: 44px;
+  width: 90px;
+}
+
+.no-todos {
+  text-align: center;
+  font-size: 24px;
+  font-style: italic;
+  color: #CCC;
+  padding: 48px 0;
+}
+
+.todo-items {
+  list-style: none;
+  padding: 20px;
+}
+
+.todo-item {
+  padding: 8px;
+}
+
+input[type=checkbox] {
+  bottom: 1px;
+  margin-right: 10px;
+  position: relative;
+}
+
+input[type=checkbox]:checked + span {
+  opacity: 0.2;
+  text-decoration: line-through;
+}
+
+.hidden {
+  display: none;
+}
