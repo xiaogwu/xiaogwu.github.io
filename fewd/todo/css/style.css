@@ -57,7 +57,7 @@ input[type=text] {
   padding: 12px;
 }
 
-input[type=text]:focus {
+input:focus {
   outline: none;
 }
 
@@ -70,6 +70,10 @@ input[type=submit] {
   font-weight: 600;
   height: 44px;
   margin-left: 12px;
+}
+
+input[type=submit]:hover {
+  cursor: pointer;
 }
 
 .no-todos {

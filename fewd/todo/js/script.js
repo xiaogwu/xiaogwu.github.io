@@ -5,6 +5,18 @@ var todoItems = document.querySelector('.todo-items');
 var noTodos = document.querySelector('.no-todos');
 var count = document.querySelector('.count');
 
+function updateCount() {
+  var checkboxes = document.querySelectorAll('.todo-item input');
+  var counter = 0;
+  for (var i = 0; i < checkboxes.length; i++) {
+    if (!checkboxes[i].checked) {
+      counter++;
+    }
+    checkboxes[i].addEventListener('change', updateCount);
+  }
+  count.textContent = counter;
+}
+
 function addTodo(event) {
   event.preventDefault();
   var newTodo = newTodoItemInput.value;
@@ -17,6 +29,7 @@ function addTodo(event) {
       }
     }
     form.reset();
+    updateCount();
   }
 }
 
@@ -32,7 +45,6 @@ function createTodo(todoItem) {
   label.appendChild(span);
   li.appendChild(label);
   todoItems.appendChild(li);
-  count.textContent = parseInt(count.textContent) + 1;
 }
 
 form.addEventListener("submit", addTodo);
