@@ -12,7 +12,9 @@ function addTodo(event) {
     noTodos.classList.add("hidden");
     var todoList = newTodo.split(',');
     for (var i = 0; i < todoList.length; i++) {
-      createTodo(todoList[i].trim());
+      if(todoList[i].length > 0) {
+        createTodo(todoList[i].trim());
+      }
     }
     form.reset();
   }
