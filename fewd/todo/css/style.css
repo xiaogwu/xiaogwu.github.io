@@ -79,7 +79,6 @@ input[type=submit]:hover {
 .no-todos {
   text-align: center;
   font-size: 24px;
-  font-style: italic;
   color: #CCC;
   padding: 48px 0;
 }
