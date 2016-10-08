@@ -1,0 +1,59 @@
+* {
+  outline: 1px solid red;
+}
+
+.hidden {
+  display: none;
+}
+
+.content-wrapper {
+  display: flex;
+}
+
+body {
+  background-color: #3A3A3A;
+  color: white;
+}
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+header h1 {
+  font-size: 36px;
+}
+
+.movie-posters,
+.movie-info {
+  flex: 1;
+}
+
+.movie-search-list form {
+  width: 314px;
+}
+
+.movie-search-list ul {
+  padding: 0;
+  width: 300px;
+}
+
+.movie-search-list li {
+  list-style-type: none;
+  margin: 12px 0;
+}
+
+.movie-search-list input {
+  padding: 5px;
+  width: 100%;
+}
+
+input[type=submit] {
+  background-color: #049BD7;
+  border-radius: 5px;
+  border: 1px solid #0A86B7;
+  color: white;
+  font-weight: 600;
+  height: 40px;
+  width: 100%;
+}

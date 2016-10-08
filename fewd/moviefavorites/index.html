@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Movie Favorites</title>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>My Favorite Movies</h1>
+    </header>
+    <div class="movie-search-list">
+      <form action="index.html" method="post">
+        <ul>
+          <li>
+            <input type="text" class="movie">
+          </li>
+          <li>
+            <input type="text" class="movie">
+          </li>
+          <li>
+            <input type="text" class="movie">
+          </li>
+          <li>
+            <input type="text" class="movie">
+          </li>
+          <li>
+            <input type="text" class="movie">
+          </li>
+          <li>
+            <input type="text" class="movie">
+          </li>
+        </ul>
+        <input type="submit" value="Search">
+      </form>
+    </div>
+
+    <div class="no-moview-found hidden">
+      <p>No Movies Found</p>
+      <button>Search Again</button>
+    </div>
+
+    <div class="movies-view hidden">
+      <div class="content-wrapper">
+        <div class="movie-posters">
+          <p>Click on a movie to see the details.</p>
+          <div class="movie-poster-images"></div>
+        </div>
+        <div class="movie-info">
+          <table>
+            <tr>
+              <th>Title</th>
+              <td class="movie-title"></td>
+            </tr>
+            <tr>
+              <th>Year</th>
+              <td class="movie-year"></td>
+            </tr>
+            <tr>
+              <th>Rating</th>
+              <td class="movie-rating"></td>
+            </tr>
+            <tr>
+              <tr>
+                <th>Runtime</th>
+                <td class="movie-runtime"></td>
+              </tr>
+              <th>Plot</th>
+              <td class="movie-plot"></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <button>Search Again</button>
+    </div>
+  </main>
+  <script src="js/script.js"></script>
+</body>
+</html>
