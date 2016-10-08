@@ -6,10 +6,33 @@ var moviePosters = document.querySelector(".movie-posters");
 var moviePosterImages = document.querySelector(".movie-poster-images");
 var movieInfo = document.querySelector(".movie-info");
 var noMoviesFound = document.querySelector(".no-moview-found");
-var searchAgain = document.querySelectorAll("button");
+var searchAgainButton = document.querySelector("button");
+var movieTitle = document.querySelector(".movie-title");
+var movieYear = document.querySelector(".movie-year");
+var movieRated = document.querySelector(".movie-rated");
+var movieRuntime = document.querySelector(".movie-runtime");
+var moviePlot = document.querySelector(".movie-plot");
 
-function addMovie(movie) {
+function updateMovieInfo(event) {
+  movieTitle.textContent = event.target.dataset.title;
+  movieYear.textContent = event.target.dataset.year;
+  movieRated.textContent = event.target.dataset.rated;
+  movieRuntime.textContent = event.target.dataset.runtime;
+  moviePlot.textContent = event.target.dataset.plot;
+}
 
+function addMovieImage(movie) {
+  if (movie.Poster !== 'N/A') {
+    var img = document.createElement("img");
+    img.setAttribute("src", movie.Poster);
+    img.setAttribute("data-title", movie.Title);
+    img.setAttribute("data-year", movie.Year);
+    img.setAttribute("data-rated", movie.Rated);
+    img.setAttribute("data-runtime", movie.Runtime);
+    img.setAttribute("data-plot", movie.Plot);
+    moviePosterImages.appendChild(img);
+    img.addEventListener("click", updateMovieInfo);
+  }
 }
 
 function getMovie(title) {
@@ -24,7 +47,9 @@ function getMovie(title) {
     if (httpRequest.readyState === XMLHttpRequest.DONE) {
       if (httpRequest.status === 200) {
         moviesView.classList.remove("hidden");
-        console.log(httpRequest.response);
+        if (httpRequest.response.Response !== 'False') {
+          addMovieImage(httpRequest.response);
+        }
       } else {
         console.log("Error");
       }
@@ -49,4 +74,10 @@ function searchMovies(event) {
   movieSearchList.classList.add("hidden");
 }
 
-searchButton.addEventListener("click", searchMovies)
+function searchAgain(event) {
+  event.preventDefault();
+  document.location.reload(true);
+}
+
+searchButton.addEventListener("click", searchMovies);
+searchAgainButton.addEventListener("click", searchAgain);
