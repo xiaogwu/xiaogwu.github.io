@@ -24,7 +24,8 @@ function updateMovieInfo(event) {
 function addMovieImage(movie) {
   if (movie.Poster !== 'N/A') {
     var img = document.createElement("img");
-    img.setAttribute("src", movie.Poster);
+    img.setAttribute("height", "208px");
+    img.setAttribute("src", "https://crossorigin.me/" + movie.Poster);
     img.setAttribute("data-title", movie.Title);
     img.setAttribute("data-year", movie.Year);
     img.setAttribute("data-rated", movie.Rated);
@@ -49,6 +50,8 @@ function getMovie(title) {
         moviesView.classList.remove("hidden");
         if (httpRequest.response.Response !== 'False') {
           addMovieImage(httpRequest.response);
+          var clickImage = document.querySelector("img");
+          clickImage.click();
         }
       } else {
         console.log("Error");
