@@ -1,5 +1,5 @@
 var form = document.querySelector("form");
-var searchButton = document.querySelector("input[type=submit");
+var searchButton = document.querySelector("input[type=submit]");
 var movieSearchList = document.querySelector(".movie-search-list");
 var moviesView = document.querySelector(".movies-view");
 var moviePosters = document.querySelector(".movie-posters");

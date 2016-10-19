@@ -113,11 +113,11 @@ footer .fa-github {
 
   table {
     margin-left: 0;
-    margin-top: 24px;
+    margin-top: 0;
   }
 
   img {
-    height: 158px;
+    height: 50px;
     margin: 6px;
   }
 
@@ -134,5 +134,9 @@ footer .fa-github {
 
   .movie-view {
     margin: 0 25px;
+  }
+
+  .movies-view {
+    padding: 0 25px 25px
   }
 }
