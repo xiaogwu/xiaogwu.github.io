@@ -63,6 +63,8 @@ th {
 .movie-search-list li {
   list-style-type: none;
   margin: 12px 0;
+  padding: 6px;
+  width: 92%;
 }
 
 .movie-search-list input {
