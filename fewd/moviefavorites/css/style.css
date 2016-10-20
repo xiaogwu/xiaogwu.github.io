@@ -1,5 +1,5 @@
 * {
-  /*outline: 1px solid red;*/
+  outline: 1px solid red;
 }
 
 .hidden {
@@ -52,19 +52,19 @@ th {
 
 .movie-search-list form {
   margin: 0 auto;
-  width: 314px;
+  max-width: 314px;
 }
 
 .movie-search-list ul {
   padding: 0;
-  width: 300px;
+  max-width: 300px;
 }
 
 .movie-search-list li {
   list-style-type: none;
-  margin: 12px 0;
+  margin: 12px ;
   padding: 6px;
-  width: 92%;
+  /*width: 92%;*/
 }
 
 .movie-search-list input {
@@ -84,7 +84,7 @@ button {
 }
 
 button {
-  width: 150px;
+  max-width: 150px;
 }
 
 footer a {
