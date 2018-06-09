@@ -1,1 +1,0 @@
-!function(){function o(o,n,c,l,r){l.backToTop=function(){r.hash("top"),c()}}angular.module("mst3k").controller("MainController",o),o.$inject=["LocalStorage","QueryService","$anchorScroll","$scope","$location"]}();
