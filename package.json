@@ -1,0 +1,24 @@
+{
+  "name": "xiaogwu.github.io",
+  "version": "1.0.0",
+  "description": "Personal website",
+  "main": "index.js",
+  "dependencies": {
+    "eslint": "^4.19.1",
+    "git-pages": "^0.8.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiaogwu/xiaogwu.github.io.git"
+  },
+  "author": "@xiaogwu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xiaogwu/xiaogwu.github.io/issues"
+  },
+  "homepage": "https://github.com/xiaogwu/xiaogwu.github.io#readme"
+}
