@@ -7,6 +7,11 @@
     "eslint": "^4.19.1",
     "git-pages": "^0.8.1"
   },
+  "overrides": {
+    "git-pages": {
+      "marked": "0.3.19"
+    }
+  },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
