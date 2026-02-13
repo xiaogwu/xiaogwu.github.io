@@ -2,7 +2,6 @@
   "name": "xiaogwu.github.io",
   "version": "1.0.0",
   "description": "Personal website",
-  "main": "index.js",
   "dependencies": {
     "eslint": "^4.19.1",
     "git-pages": "^0.8.1"
