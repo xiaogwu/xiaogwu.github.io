@@ -2,11 +2,12 @@
   "name": "xiaogwu.github.io",
   "version": "1.0.0",
   "description": "Personal website",
-  "dependencies": {
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
     "eslint": "^4.19.1",
     "git-pages": "^0.8.1"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "node test/validate-package-json.js"
   },
