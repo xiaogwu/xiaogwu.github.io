@@ -6,9 +6,10 @@
   "dependencies": {},
   "devDependencies": {
     "eslint": "^4.19.1",
-    "git-pages": "^0.8.1"
+    "http-server": "^14.1.1"
   },
   "scripts": {
+    "start": "http-server .",
     "test": "node test/validate-package-json.js"
   },
   "repository": {
