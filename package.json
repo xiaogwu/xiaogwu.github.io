@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "description": "Personal website",
   "main": "index.js",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "eslint": "^4.19.1",
-    "git-pages": "^0.8.1"
+    "http-server": "^14.1.1"
   },
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "http-server .",
+    "test": "node test/validate-package-json.js"
   },
   "repository": {
     "type": "git",
