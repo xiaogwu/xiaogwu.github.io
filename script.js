@@ -68,8 +68,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const typographySelect = document.getElementById('typography-select');
 
     if (typographySelect) {
+        const TYPOGRAPHY_STORAGE_KEY = 'typography-preference';
+        const savedTypography = localStorage.getItem(TYPOGRAPHY_STORAGE_KEY);
+        const initialTypography = savedTypography || 'modern';
+
+        // Apply initial typography
+        typographySelect.value = initialTypography;
+        if (initialTypography !== 'system') {
+            document.body.classList.add(`typography-${initialTypography}`);
+        }
+
         typographySelect.addEventListener('change', (e) => {
             const selectedTheme = e.target.value;
+
+            // Save preference
+            localStorage.setItem(TYPOGRAPHY_STORAGE_KEY, selectedTheme);
 
             // Remove all typography classes
             document.body.classList.remove('typography-modern', 'typography-classic', 'typography-tech');
