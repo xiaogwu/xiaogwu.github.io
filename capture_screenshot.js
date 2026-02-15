@@ -1,6 +1,5 @@
 const { chromium } = require('playwright');
 const { spawn } = require('child_process');
-const path = require('path');
 
 (async () => {
   // Start the server

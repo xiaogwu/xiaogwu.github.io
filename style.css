@@ -6,6 +6,10 @@
 }
 
 :root {
+    /* Typography */
+    --heading-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --body-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
     /* Dark Mode (Default) */
     --bg-color: #1a1a1a;
     --text-color: #e0e0e0;
@@ -60,7 +64,7 @@ body.light-mode {
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: var(--body-font);
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--bg-color);
@@ -173,6 +177,10 @@ section {
     padding: 60px 20px;
     max-width: 1100px;
     margin: 0 auto;
+}
+
+h1, h2, h3, h4, h5, h6, .btn, nav a {
+    font-family: var(--heading-font);
 }
 
 h2 {
@@ -391,4 +399,42 @@ footer {
     .about-text {
         text-align: center;
     }
+}
+
+/* Typography Options */
+.typography-modern {
+    --heading-font: 'Montserrat', sans-serif;
+    --body-font: 'Open Sans', sans-serif;
+}
+
+.typography-classic {
+    --heading-font: 'Playfair Display', serif;
+    --body-font: 'Source Sans Pro', sans-serif;
+}
+
+.typography-tech {
+    --heading-font: 'Space Mono', monospace;
+    --body-font: 'Inter', sans-serif;
+}
+
+#typography-select {
+    background-color: transparent;
+    color: var(--nav-link-color);
+    border: 1px solid var(--nav-link-color);
+    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.9rem;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+#typography-select:hover {
+    color: var(--nav-link-hover-color);
+    border-color: var(--nav-link-hover-color);
+}
+
+#typography-select option {
+    background-color: var(--header-bg);
+    color: var(--text-color);
 }
