@@ -114,6 +114,27 @@ h2 {
     box-shadow: 0 4px 6px rgba(0,0,0,0.2);
 }
 
+.about-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.about-image img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #ffcc00;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.about-text {
+    flex: 1;
+    text-align: left;
+}
+
 /* Skills Section */
 .skills-grid {
     display: flex;
@@ -235,5 +256,14 @@ footer {
 
     .hero p {
         font-size: 1.2rem;
+    }
+
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-text {
+        text-align: center;
     }
 }
