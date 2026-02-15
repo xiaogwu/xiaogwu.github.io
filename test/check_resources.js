@@ -46,6 +46,16 @@ document.querySelectorAll('img[src]').forEach(el => {
   checkPath(el.getAttribute('src'), 'Image');
 });
 
+// Check <video src="...">
+document.querySelectorAll('video[src]').forEach(el => {
+  checkPath(el.getAttribute('src'), 'Video');
+});
+
+// Check <source src="...">
+document.querySelectorAll('source[src]').forEach(el => {
+  checkPath(el.getAttribute('src'), 'Source');
+});
+
 if (failures.length > 0) {
   console.error('Resource verification failed:');
   failures.forEach(f => console.error(f));
