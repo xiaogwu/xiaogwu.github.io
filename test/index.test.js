@@ -50,4 +50,18 @@ describe('index.html structure', () => {
     expect(viewport, 'viewport meta tag').to.not.be.null;
     expect(compatible, 'X-UA-Compatible meta tag').to.not.be.null;
   });
+
+  it('should have rel="noopener noreferrer" on external links', () => {
+    const externalLinks = Array.from(document.querySelectorAll('a')).filter(a => {
+      const href = a.getAttribute('href');
+      return href && (href.startsWith('http') || href.startsWith('//'));
+    });
+
+    externalLinks.forEach(link => {
+      const rel = link.getAttribute('rel');
+      expect(rel, `Link to ${link.href} needs rel="noopener noreferrer"`).to.not.be.null;
+      expect(rel, `Link to ${link.href} needs rel="noopener noreferrer"`).to.contain('noopener');
+      expect(rel, `Link to ${link.href} needs rel="noopener noreferrer"`).to.contain('noreferrer');
+    });
+  });
 });
