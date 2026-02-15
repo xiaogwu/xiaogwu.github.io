@@ -136,7 +136,7 @@ nav a:hover {
 .hero {
     height: 100vh;
     background: linear-gradient(135deg, var(--hero-bg-start) 0%, var(--hero-bg-end) 100%);
-    color: var(--hero-text);
+    color: #fff;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -146,6 +146,8 @@ nav a:hover {
     transition: background 0.3s ease, color 0.3s ease;
     position: relative;
     overflow: hidden;
+    max-width: 100%;
+    width: 100%;
 }
 
 #bg-video {
