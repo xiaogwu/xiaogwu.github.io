@@ -63,4 +63,21 @@ document.addEventListener('DOMContentLoaded', () => {
             navLinks.classList.remove("active");
         }));
     }
+
+    // Typography Switcher Logic
+    const typographySelect = document.getElementById('typography-select');
+
+    if (typographySelect) {
+        typographySelect.addEventListener('change', (e) => {
+            const selectedTheme = e.target.value;
+
+            // Remove all typography classes
+            document.body.classList.remove('typography-modern', 'typography-classic', 'typography-tech');
+
+            // Add the selected typography class if not system default
+            if (selectedTheme !== 'system') {
+                document.body.classList.add(`typography-${selectedTheme}`);
+            }
+        });
+    }
 });
