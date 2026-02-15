@@ -312,6 +312,7 @@ h2 {
     font-size: 1.2rem;
     text-decoration: none;
     transition: color 0.3s ease;
+    white-space: nowrap;
 }
 
 #contact a:hover {
@@ -327,7 +328,7 @@ h2 {
 }
 
 .social-links a i {
-    margin-right: 8px;
+    margin-right: 4px;
 }
 
 /* Footer */
