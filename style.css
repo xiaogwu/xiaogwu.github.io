@@ -332,13 +332,21 @@ footer {
     transition: background 0.3s ease, color 0.3s ease;
 }
 
+.footer-section {
+    margin-bottom: 20px;
+}
+
+.footer-section:last-child {
+    margin-bottom: 0;
+}
+
 .footer-nav {
     list-style: none;
     display: flex;
     justify-content: center;
     gap: 20px;
-    margin-bottom: 15px;
     flex-wrap: wrap;
+    flex-direction: row;
 }
 
 .footer-nav a {
@@ -422,6 +430,11 @@ footer {
 
     .about-text {
         text-align: center;
+    }
+
+    .footer-nav {
+        flex-direction: column;
+        gap: 15px;
     }
 }
 
