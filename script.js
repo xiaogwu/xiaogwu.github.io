@@ -93,4 +93,23 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Dynamic Tenure Calculation
+    const appleTenureElement = document.getElementById('apple-tenure');
+    if (appleTenureElement) {
+        // Start date: November 26, 2018 (Monday after Thanksgiving).
+        const startDate = new Date('2018-11-26');
+        const currentDate = new Date();
+
+        let years = currentDate.getFullYear() - startDate.getFullYear();
+        const m = currentDate.getMonth() - startDate.getMonth();
+
+        // Adjust if the current month is before the start month or
+        // if it's the start month but the day hasn't passed yet.
+        if (m < 0 || (m === 0 && currentDate.getDate() < startDate.getDate())) {
+            years--;
+        }
+
+        appleTenureElement.textContent = years;
+    }
 });
