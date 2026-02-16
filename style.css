@@ -341,6 +341,7 @@ h2 {
     padding: 40px 20px;
     border-top: 1px solid var(--border-color);
     transition: background 0.3s ease, color 0.3s ease;
+    max-width: 100%;
 }
 
 #contact a {
