@@ -56,11 +56,14 @@ document.addEventListener('DOMContentLoaded', () => {
         hamburger.addEventListener("click", () => {
             hamburger.classList.toggle("active");
             navLinks.classList.toggle("active");
+            const expanded = hamburger.classList.contains("active");
+            hamburger.setAttribute("aria-expanded", expanded);
         });
 
         document.querySelectorAll(".nav-links li a").forEach(n => n.addEventListener("click", () => {
             hamburger.classList.remove("active");
             navLinks.classList.remove("active");
+            hamburger.setAttribute("aria-expanded", "false");
         }));
     }
 
