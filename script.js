@@ -97,11 +97,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Dynamic Tenure Calculation
     const appleTenureElement = document.getElementById('apple-tenure');
     if (appleTenureElement) {
-        // Start date estimated based on "7 years" as of Feb 2026.
-        // If 2019-02-15 is the start date:
-        // Feb 2026: 7 years.
-        // Feb 2027: 8 years.
-        const startDate = new Date('2019-02-15');
+        // Start date: November 26, 2018 (Monday after Thanksgiving).
+        const startDate = new Date('2018-11-26');
         const currentDate = new Date();
 
         let years = currentDate.getFullYear() - startDate.getFullYear();

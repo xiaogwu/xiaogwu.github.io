@@ -37,9 +37,9 @@ describe('Dynamic Tenure Calculation', () => {
     document.dispatchEvent(new window.Event('DOMContentLoaded'));
 
     const tenureSpan = document.getElementById('apple-tenure');
-    // Start date 2019-02-15
+    // Start date 2018-11-26 (Monday after Thanksgiving)
     // Current date (system) 2026-02-16
-    // Expected: 7
+    // Expected: 7 (Nov 2018 -> Nov 2025 = 7 years. Feb 2026 < Nov 2026, so still 7)
     expect(tenureSpan.textContent).to.equal('7');
   });
 
