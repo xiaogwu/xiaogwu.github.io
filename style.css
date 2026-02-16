@@ -350,6 +350,7 @@ h2 {
     font-size: 1.2rem;
     text-decoration: none;
     transition: color 0.3s ease;
+    white-space: nowrap;
 }
 
 #contact a:hover {
