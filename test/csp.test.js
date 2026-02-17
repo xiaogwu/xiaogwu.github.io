@@ -23,6 +23,15 @@ describe('Content Security Policy', function() {
     await page.goto(`http://localhost:${port}`);
     const content = await page.getAttribute('meta[http-equiv="Content-Security-Policy"]', 'content');
     expect(content).to.include("default-src 'self'").and.include("script-src 'self'");
+    expect(content).to.include("object-src 'none'");
+    expect(content).to.include("base-uri 'self'");
+    expect(content).to.include("form-action 'self'");
+  });
+
+  it('should have a referrer policy', async () => {
+    await page.goto(`http://localhost:${port}`);
+    const content = await page.getAttribute('meta[name="referrer"]', 'content');
+    expect(content).to.equal("strict-origin-when-cross-origin");
   });
 
   it('should not have CSP violations', async () => {
