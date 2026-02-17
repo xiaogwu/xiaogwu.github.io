@@ -258,6 +258,10 @@ h2 {
     text-align: left;
 }
 
+.about-text p {
+    margin-bottom: 1.5rem;
+}
+
 /* Skills Section */
 .skills-grid {
     display: flex;
@@ -463,7 +467,7 @@ footer {
     }
 
     .about-text {
-        text-align: center;
+        text-align: left;
     }
 }
 
