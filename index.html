@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <header>
         <nav>
             <div class="logo">
@@ -42,78 +43,80 @@
         </nav>
     </header>
 
-    <section id="home" class="hero">
-        <video autoplay muted loop playsinline id="bg-video">
-            <source src="images/flying-through-clouds.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1>Hi, I'm Sean Wu</h1>
-            <p>I am a Content Engineer at Apple News.</p>
-            <a href="#projects" class="btn">View My Work</a>
-        </div>
-    </section>
+    <main id="main-content">
+        <section id="home" class="hero">
+            <video autoplay muted loop playsinline id="bg-video">
+                <source src="images/flying-through-clouds.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1>Hi, I'm Sean Wu</h1>
+                <p>I am a Content Engineer at Apple News.</p>
+                <a href="#projects" class="btn">View My Work</a>
+            </div>
+        </section>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <div class="content about-container">
-            <div class="about-image">
-                <img src="images/headshot.jpg" alt="Sean Wu Headshot" loading="lazy">
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="content about-container">
+                <div class="about-image">
+                    <img src="images/headshot.jpg" alt="Sean Wu Headshot" loading="lazy">
+                </div>
+                <div class="about-text">
+                    <p>Hello! I'm Sean Wu, a Content Engineer at Apple News. I've been with Apple Inc for <span id="apple-tenure">7</span> years, focusing on delivering high-quality content experiences.</p>
+                    <p>I am a software engineer based in San Francisco, specializing in front-end web technologies with a focus on JavaScript. My professional approach is defined by a commitment to technical precision, writing high-quality code, and delivering optimal end-user experiences.</p>
+                    <p>Throughout my career, I have prioritized building scalable, readable, and performance-optimized solutions. I am recognized for my ability to manage the complexities of modern software architecture while maintaining the clear communication necessary for team productivity. My expertise lies in developing high-fidelity web applications and staying at the forefront of front-end ecosystem advancements.</p>
+                </div>
             </div>
-            <div class="about-text">
-                <p>Hello! I'm Sean Wu, a Content Engineer at Apple News. I've been with Apple Inc for <span id="apple-tenure">7</span> years, focusing on delivering high-quality content experiences.</p>
-                <p>I am a software engineer based in San Francisco, specializing in front-end web technologies with a focus on JavaScript. My professional approach is defined by a commitment to technical precision, writing high-quality code, and delivering optimal end-user experiences.</p>
-                <p>Throughout my career, I have prioritized building scalable, readable, and performance-optimized solutions. I am recognized for my ability to manage the complexities of modern software architecture while maintaining the clear communication necessary for team productivity. My expertise lies in developing high-fidelity web applications and staying at the forefront of front-end ecosystem advancements.</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="skills">
-        <h2>Skills</h2>
-        <div class="skills-grid">
-            <span class="skill-tag">HTML5</span>
-            <span class="skill-tag">CSS3</span>
-            <span class="skill-tag">JavaScript</span>
-            <span class="skill-tag">React</span>
-            <span class="skill-tag">Node.js</span>
-            <span class="skill-tag">Git</span>
-            <span class="skill-tag">VS Code</span>
-            <span class="skill-tag">Linux</span>
-        </div>
-    </section>
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <span class="skill-tag">HTML5</span>
+                <span class="skill-tag">CSS3</span>
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">React</span>
+                <span class="skill-tag">Node.js</span>
+                <span class="skill-tag">Git</span>
+                <span class="skill-tag">VS Code</span>
+                <span class="skill-tag">Linux</span>
+            </div>
+        </section>
 
-    <section id="projects">
-        <h2>My Projects</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <h3>WowFolio</h3>
-                <p>Wowfolio 🦄 - A Simple & Clean Portfolio Template For Developers 👨‍💻</p>
-                <a href="https://github.com/xiaogwu/WowFolio" class="project-link" target="_blank" rel="noopener noreferrer">View Code</a>
+        <section id="projects">
+            <h2>My Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>WowFolio</h3>
+                    <p>Wowfolio 🦄 - A Simple & Clean Portfolio Template For Developers 👨‍💻</p>
+                    <a href="https://github.com/xiaogwu/WowFolio" class="project-link" target="_blank" rel="noopener noreferrer">View Code</a>
+                </div>
+                <div class="project-card">
+                    <h3>react-onclickoutside</h3>
+                    <p>An onClickOutside wrapper for React components</p>
+                    <a href="https://github.com/xiaogwu/react-onclickoutside" class="project-link" target="_blank" rel="noopener noreferrer">View Code</a>
+                </div>
+                <div class="project-card">
+                    <h3>angular-xeditable</h3>
+                    <p>Edit in place for AngularJS</p>
+                    <a href="https://github.com/xiaogwu/angular-xeditable" class="project-link" target="_blank" rel="noopener noreferrer">View Code</a>
+                </div>
             </div>
-            <div class="project-card">
-                <h3>react-onclickoutside</h3>
-                <p>An onClickOutside wrapper for React components</p>
-                <a href="https://github.com/xiaogwu/react-onclickoutside" class="project-link" target="_blank" rel="noopener noreferrer">View Code</a>
-            </div>
-            <div class="project-card">
-                <h3>angular-xeditable</h3>
-                <p>Edit in place for AngularJS</p>
-                <a href="https://github.com/xiaogwu/angular-xeditable" class="project-link" target="_blank" rel="noopener noreferrer">View Code</a>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="contact">
-        <h2>Get In Touch</h2>
-        <p>My inbox is always open. Whether you have a question or just want to say hi, I'll try my best to get back to you!</p>
-        <br>
-        <div class="social-links">
-            <a href="https://github.com/xiaogwu" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
-            <a href="https://www.linkedin.com/in/xiaogwu" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i> LinkedIn</a>
-            <a href="mailto:xiaogwu@gmail.com"><i class="fas fa-envelope"></i> Email</a>
-        </div>
-    </section>
+        <section id="contact">
+            <h2>Get In Touch</h2>
+            <p>My inbox is always open. Whether you have a question or just want to say hi, I'll try my best to get back to you!</p>
+            <br>
+            <div class="social-links">
+                <a href="https://github.com/xiaogwu" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://www.linkedin.com/in/xiaogwu" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="mailto:xiaogwu@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <ul class="footer-nav">
