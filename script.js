@@ -1,4 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Optimization: Defer loading of Font Awesome to improve initial load performance
+    const loadFontAwesome = () => {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css';
+        document.head.appendChild(link);
+    };
+    loadFontAwesome();
+
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
