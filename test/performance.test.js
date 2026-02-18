@@ -37,13 +37,32 @@ describe('Performance Optimization', () => {
     expect(preloadLink, 'Font Awesome should be preloaded').to.not.be.null;
 
     // Check for noscript fallback
-    const noscript = document.querySelector('noscript');
-    expect(noscript, 'There should be a noscript tag').to.not.be.null;
+    const noscripts = document.querySelectorAll('noscript');
+    expect(noscripts.length).to.be.at.least(1, 'There should be at least one noscript tag');
 
     // Check that noscript contains the stylesheet link
-    // Note: JSDOM might treat noscript content as text or elements depending on configuration
-    // We check innerHTML to be safe
-    expect(noscript.innerHTML).to.include('font-awesome');
-    expect(noscript.innerHTML).to.include('rel="stylesheet"');
+    let fontAwesomeFallbackFound = false;
+    noscripts.forEach(noscript => {
+        if (noscript.innerHTML.includes('font-awesome') && noscript.innerHTML.includes('rel="stylesheet"')) {
+            fontAwesomeFallbackFound = true;
+        }
+    });
+    expect(fontAwesomeFallbackFound, 'Font Awesome fallback should exist in noscript').to.be.true;
+  });
+
+  it('should not block rendering with Google Fonts', () => {
+      // Check for preload link
+      const preloadLink = document.querySelector('link[rel="preload"][id="google-fonts-css"][as="style"]');
+      expect(preloadLink, 'Google Fonts should be preloaded with id google-fonts-css').to.not.be.null;
+
+      // Check for noscript fallback
+      const noscripts = document.querySelectorAll('noscript');
+      let googleFontsFallbackFound = false;
+      noscripts.forEach(noscript => {
+          if (noscript.innerHTML.includes('fonts.googleapis.com') && noscript.innerHTML.includes('rel="stylesheet"')) {
+              googleFontsFallbackFound = true;
+          }
+      });
+      expect(googleFontsFallbackFound, 'Google Fonts fallback should exist in noscript').to.be.true;
   });
 });
