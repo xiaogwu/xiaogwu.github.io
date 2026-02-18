@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const link = document.createElement('link');
         link.rel = 'stylesheet';
         link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css';
+        link.integrity = 'sha384-5e2ESR8Ycmos6g3gAKr1Jvwye8sW4U1u/cAKulfVJnkakCcMqhOudbtPnvJ+nbv7';
+        link.crossOrigin = 'anonymous';
         document.head.appendChild(link);
     };
     loadFontAwesome();
