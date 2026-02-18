@@ -5,6 +5,25 @@
     box-sizing: border-box;
 }
 
+/* Skip Link */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--accent-color);
+    color: var(--btn-text);
+    padding: 8px;
+    z-index: 2000;
+    transition: top 0.3s;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 0 0 5px 0;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
 :root {
     /* Layout */
     --header-height: 83px;
