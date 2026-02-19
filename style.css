@@ -1,35 +1,82 @@
 /* Reset and Base Styles */
 :root {
-    /* Dark Mode (Default) */
-    --bg-primary: #0f172a;
-    --bg-secondary: #1e293b;
-    --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
-    --accent-color: #38bdf8; /* Sky blue */
+    /* Layout */
+    --header-height: 83px;
+
+    /* Typography */
+    --heading-font: 'Inter', system-ui, -apple-system, sans-serif;
+    --body-font: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+    /* Dark Mode (Default) - Slate Palette */
+    --bg-primary: #0f172a;      /* Main background */
+    --bg-secondary: #1e293b;    /* Alternating sections, cards */
+    --text-primary: #f8fafc;    /* Main text */
+    --text-secondary: #94a3b8;  /* Secondary text */
+    --accent-color: #38bdf8;    /* Sky blue */
     --accent-hover: #0ea5e9;
-    --header-bg: rgba(15, 23, 42, 0.8);
-    --card-bg: #1e293b;
+
+    --header-bg: rgba(15, 23, 42, 0.9);
+    --header-text: var(--text-primary);
+
+    --nav-link-color: var(--text-secondary);
+    --nav-link-hover-color: var(--accent-color);
+
+    --card-bg: var(--bg-secondary);
     --border-color: #334155;
+
+    --btn-bg: var(--accent-color);
+    --btn-text: #0f172a;        /* Dark text on light blue */
+    --btn-hover-bg: var(--accent-hover);
+
+    --section-bg: var(--bg-secondary);
+    --footer-bg: var(--bg-secondary);
+    --footer-text: var(--text-primary);
+
+    --hero-bg-start: #0f172a;
+    --hero-bg-end: #1e293b;
+    --hero-text: #ffffff;
+
+    --skill-tag-bg: var(--bg-secondary);
+    --skill-tag-hover-text: var(--accent-color);
+
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 body.light-mode {
-    /* Light Mode */
+    /* Light Mode - Slate/White Palette */
     --bg-primary: #f8fafc;
     --bg-secondary: #ffffff;
     --text-primary: #0f172a;
     --text-secondary: #475569;
-    --accent-color: #0284c7; /* Darker blue for contrast */
+    --accent-color: #0284c7;    /* Darker blue for contrast on light bg */
     --accent-hover: #0369a1;
-    --header-bg: rgba(248, 250, 252, 0.8);
-    --card-bg: #ffffff;
+
+    --header-bg: rgba(248, 250, 252, 0.9);
+    --header-text: var(--text-primary);
+
+    --nav-link-color: var(--text-secondary);
+    --nav-link-hover-color: var(--accent-color);
+
+    --card-bg: var(--bg-secondary);
     --border-color: #e2e8f0;
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+    --btn-bg: var(--accent-color);
+    --btn-text: #ffffff;        /* White text on dark blue */
+    --btn-hover-bg: var(--accent-hover);
+
+    --section-bg: var(--bg-secondary);
+    --footer-bg: #e2e8f0;       /* Distinct footer in light mode */
+    --footer-text: var(--text-primary);
+
+    --hero-bg-start: #e2e8f0;
+    --hero-bg-end: #f8fafc;
+    --hero-text: var(--text-primary);
+
+    --skill-tag-bg: #e2e8f0;
+    --skill-tag-hover-text: var(--accent-color);
 }
 
 * {
@@ -55,67 +102,6 @@ body.light-mode {
 
 .skip-link:focus {
     top: 0;
-}
-
-:root {
-    /* Layout */
-    --header-height: 83px;
-
-    /* Typography */
-    --heading-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    --body-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
-    /* Dark Mode (Default) */
-    --bg-color: #1a1a1a;
-    --text-color: #e0e0e0;
-    --header-bg: rgba(20, 20, 20, 0.95);
-    --header-text: #fff;
-    --nav-link-color: #fff;
-    --nav-link-hover-color: #ffcc00;
-    --hero-bg-start: #111;
-    --hero-bg-end: #333;
-    --hero-text: #fff;
-    --btn-bg: #ffcc00;
-    --btn-text: #333;
-    --btn-hover-bg: #e6b800;
-    --section-bg: #252525;
-    --section-shadow: rgba(0,0,0,0.2);
-    --accent-color: #ffcc00;
-    --skill-tag-bg: #333;
-    --skill-tag-hover-text: #333;
-    --card-bg: #252525;
-    --card-shadow: rgba(0,0,0,0.2);
-    --card-hover-shadow: rgba(0,0,0,0.3);
-    --footer-bg: #222;
-    --footer-text: #fff;
-    --border-color: #333;
-}
-
-body.light-mode {
-    /* Light Mode Overrides */
-    --bg-color: #f4f4f4;
-    --text-color: #333;
-    --header-bg: rgba(255, 255, 255, 0.95);
-    --header-text: #333;
-    --nav-link-color: #333;
-    --nav-link-hover-color: #d4a017; /* Darker gold */
-    --hero-bg-start: #e0e0e0;
-    --hero-bg-end: #fff;
-    --hero-text: #333;
-    --btn-bg: #ffcc00;
-    --btn-text: #333;
-    --btn-hover-bg: #d4a017;
-    --section-bg: #fff;
-    --section-shadow: rgba(0,0,0,0.1);
-    --accent-color: #d4a017; /* Darker gold for text readability */
-    --skill-tag-bg: #e0e0e0;
-    --skill-tag-hover-text: #333;
-    --card-bg: #fff;
-    --card-shadow: rgba(0,0,0,0.1);
-    --card-hover-shadow: rgba(0,0,0,0.2);
-    --footer-bg: #ddd;
-    --footer-text: #333;
-    --border-color: #ccc;
 }
 
 body {
@@ -157,13 +143,14 @@ header {
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-color);
     transition: background-color 0.3s ease, border-color 0.3s ease;
+    height: var(--header-height);
 }
 
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 4rem;
+    height: 100%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
@@ -184,11 +171,12 @@ header {
 .nav-links a {
     font-weight: 500;
     font-size: 0.95rem;
-    color: var(--text-secondary);
+    color: var(--nav-link-color);
+    transition: color 0.2s ease;
 }
 
 .nav-links a:hover {
-    color: var(--accent-color);
+    color: var(--nav-link-hover-color);
 }
 
 .theme-toggle {
@@ -196,32 +184,32 @@ header {
     border: none;
     cursor: pointer;
     font-size: 1.25rem;
-    color: var(--text-secondary);
+    color: var(--nav-link-color);
     transition: color 0.2s ease;
     padding: 0.25rem;
 }
 
 .theme-toggle:hover {
-    color: var(--accent-color);
+    color: var(--nav-link-hover-color);
 }
 
 /* Hero Section */
 .hero {
     height: 100vh;
     background: linear-gradient(135deg, var(--hero-bg-start) 0%, var(--hero-bg-end) 100%);
-    color: #fff;
+    color: var(--hero-text);
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 4rem 2rem;
     text-align: center;
-    padding: 0 20px;
     transition: background 0.3s ease, color 0.3s ease;
     position: relative;
     overflow: hidden;
     max-width: 100%;
     width: 100%;
-    margin-bottom: 80px;
+    /* Ensure no margin-bottom pushes content incorrectly unless desired */
+    /* margin-bottom: 80px; removed to keep consistent spacing */
 }
 
 #bg-video {
@@ -240,7 +228,7 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.5); /* Always dark overlay for video text readability */
     z-index: 1;
 }
 
@@ -250,9 +238,6 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.hero-content {
     max-width: 800px;
 }
 
@@ -265,21 +250,13 @@ header {
 
 .highlight {
     color: var(--accent-color);
-    background: linear-gradient(120deg, var(--accent-color) 0%, var(--accent-hover) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
 .hero-subtitle {
     font-size: 1.5rem;
-    color: var(--text-secondary);
+    color: var(--text-primary); /* Ensure contrast on video */
     margin-bottom: 2.5rem;
-}
-
-.hero-buttons {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
+    opacity: 0.9;
 }
 
 .btn {
@@ -290,47 +267,59 @@ header {
     border-radius: 0.5rem;
     font-weight: 600;
     transition: all 0.2s ease;
+    font-family: var(--heading-font);
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
 }
 
-.primary-btn {
-    background-color: var(--accent-color);
-    color: #fff; /* Always white text on primary button */
-}
-
-.primary-btn:hover {
-    background-color: var(--accent-hover);
+.btn:hover {
+    background-color: var(--btn-hover-bg);
     transform: translateY(-2px);
-}
-
-.secondary-btn {
-    background-color: transparent;
-    border: 1px solid var(--border-color);
-    color: var(--text-primary);
-}
-
-.secondary-btn:hover {
-    border-color: var(--accent-color);
-    color: var(--accent-color);
 }
 
 /* Section General */
 section {
-    padding: 60px 20px;
-    max-width: 1100px;
+    padding: 80px 20px;
+    max-width: 100%;
     margin: 0 auto;
     scroll-margin-top: var(--header-height);
 }
 
-h1, h2, h3, h4, h5, h6, .btn, nav a {
-    font-family: var(--heading-font);
+/* Alternating Section Backgrounds */
+/* Use nth-of-type(even) for distinct sections */
+section:nth-of-type(even) {
+    background-color: var(--bg-secondary);
+}
+/* Ensure odd sections use primary background explicitly if needed, though they inherit from body */
+section:nth-of-type(odd) {
+    background-color: var(--bg-primary);
 }
 
-.section-title {
+/* Override for Hero which is the first section but has video */
+section.hero {
+    background-color: transparent; /* Let video show */
+    padding: 0; /* Hero handles its own padding */
+}
+
+/* Section Content Wrapper to constrain width */
+section > h2,
+section > div,
+section > p {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-title, h2 {
     font-size: 2.25rem;
     font-weight: 700;
     text-align: center;
     margin-bottom: 3rem;
     color: var(--text-primary);
+    font-family: var(--heading-font);
 }
 
 /* About Section */
@@ -380,7 +369,7 @@ h1, h2, h3, h4, h5, h6, .btn, nav a {
 }
 
 .skill-tag {
-    background-color: var(--card-bg);
+    background-color: var(--skill-tag-bg);
     color: var(--text-primary);
     padding: 0.75rem 1.5rem;
     border-radius: 2rem;
@@ -421,13 +410,14 @@ h1, h2, h3, h4, h5, h6, .btn, nav a {
     border-color: var(--accent-color);
 }
 
-.project-info h3 {
+.project-card h3 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
     color: var(--text-primary);
+    font-family: var(--heading-font);
 }
 
-.project-info p {
+.project-card p {
     color: var(--text-secondary);
     margin-bottom: 1.5rem;
 }
@@ -458,12 +448,17 @@ h1, h2, h3, h4, h5, h6, .btn, nav a {
 /* Contact Section */
 .contact {
     text-align: center;
-    background: var(--footer-bg);
+    background: var(--footer-bg); /* Use footer background for continuity if desired, or secondary */
     color: var(--footer-text);
-    padding: 40px 20px;
+    padding: 60px 20px;
     border-top: 1px solid var(--border-color);
     transition: background 0.3s ease, color 0.3s ease;
-    max-width: 100%;
+    width: 100%;
+}
+
+/* Override contact section background if it falls into the alternating pattern incorrectly or we want specific styling */
+#contact {
+    background-color: var(--bg-secondary);
 }
 
 #contact a {
@@ -473,6 +468,10 @@ h1, h2, h3, h4, h5, h6, .btn, nav a {
     text-decoration: none;
     transition: color 0.3s ease;
     white-space: nowrap;
+}
+
+.social-links {
+    margin-top: 2rem;
 }
 
 .social-links a {
@@ -493,11 +492,11 @@ h1, h2, h3, h4, h5, h6, .btn, nav a {
 footer {
     padding: 2rem;
     text-align: center;
-    padding: 20px;
-    background: var(--header-bg);
+    background: var(--footer-bg);
     color: var(--footer-text);
     margin-top: auto;
     transition: background 0.3s ease, color 0.3s ease;
+    border-top: 1px solid var(--border-color);
 }
 
 .footer-nav {
@@ -526,7 +525,7 @@ footer {
     cursor: pointer;
     background: none;
     border: none;
-    padding: 0;
+    padding: 0.5rem;
 }
 
 .bar {
@@ -535,7 +534,84 @@ footer {
     height: 3px;
     margin: 5px auto;
     transition: all 0.3s ease-in-out;
-    background-color: var(--nav-link-color);
+    background-color: var(--text-primary);
+    border-radius: 2px;
+}
+
+/* Typography Options */
+.typography-modern {
+    --heading-font: 'Montserrat', sans-serif;
+    --body-font: 'Open Sans', sans-serif;
+}
+
+.typography-classic {
+    --heading-font: 'Playfair Display', serif;
+    --body-font: 'Source Sans Pro', sans-serif;
+}
+
+.typography-tech {
+    --heading-font: 'Space Mono', monospace;
+    --body-font: 'Inter', sans-serif;
+}
+
+#typography-select {
+    background-color: transparent;
+    color: var(--nav-link-color);
+    border: 1px solid var(--border-color);
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+#typography-select:hover {
+    color: var(--nav-link-hover-color);
+    border-color: var(--accent-color);
+}
+
+#typography-select option {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+/* Back to Top Button */
+#back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--accent-color);
+    color: var(--btn-text);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+#back-to-top:hover {
+    background: var(--btn-hover-bg);
+    transform: translateY(-5px);
+}
+
+#back-to-top:focus-visible {
+    outline: 2px solid var(--text-primary);
+    outline-offset: 4px;
 }
 
 /* Responsive Design */
@@ -559,15 +635,16 @@ footer {
     .nav-links {
         position: fixed;
         left: -100%;
-        top: 70px;
+        top: var(--header-height);
         gap: 0;
         flex-direction: column;
         background-color: var(--header-bg);
         width: 100%;
         text-align: center;
         transition: 0.3s;
-        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-        padding: 20px 0;
+        box-shadow: var(--shadow-lg);
+        padding: 2rem 0;
+        height: auto;
     }
 
     .nav-links.active {
@@ -575,7 +652,7 @@ footer {
     }
 
     .nav-links li {
-        margin: 16px 0;
+        margin: 1rem 0;
     }
 
     .hero-title {
@@ -595,81 +672,4 @@ footer {
     .about-text {
         text-align: left;
     }
-}
-
-/* Typography Options */
-.typography-modern {
-    --heading-font: 'Montserrat', sans-serif;
-    --body-font: 'Open Sans', sans-serif;
-}
-
-.typography-classic {
-    --heading-font: 'Playfair Display', serif;
-    --body-font: 'Source Sans Pro', sans-serif;
-}
-
-.typography-tech {
-    --heading-font: 'Space Mono', monospace;
-    --body-font: 'Inter', sans-serif;
-}
-
-#typography-select {
-    background-color: transparent;
-    color: var(--nav-link-color);
-    border: 1px solid var(--nav-link-color);
-    padding: 5px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 0.9rem;
-    transition: color 0.3s ease, border-color 0.3s ease;
-}
-
-#typography-select:hover {
-    color: var(--nav-link-hover-color);
-    border-color: var(--nav-link-hover-color);
-}
-
-#typography-select option {
-    background-color: var(--header-bg);
-    color: var(--text-color);
-}
-
-/* Back to Top Button */
-#back-to-top {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: var(--accent-color);
-    color: var(--btn-text);
-    border: none;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, background 0.3s ease;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#back-to-top.visible {
-    opacity: 1;
-    visibility: visible;
-}
-
-#back-to-top:hover {
-    background: var(--btn-hover-bg);
-    transform: translateY(-5px);
-    box-shadow: 0 6px 8px rgba(0,0,0,0.4);
-}
-
-#back-to-top:focus-visible {
-    outline: 2px solid var(--text-color);
-    outline-offset: 4px;
 }
