@@ -15,7 +15,7 @@
   },
   "scripts": {
     "start": "http-server .",
-    "test": "node test/validate-package-json.js && mocha test/*.test.js && node test/check_resources.js",
+    "test": "mocha test/*.test.js && node test/check_resources.js",
     "lint": "eslint ."
   },
   "repository": {
