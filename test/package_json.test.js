@@ -12,7 +12,7 @@ describe('package.json', () => {
     try {
       packageJsonContent = fs.readFileSync(packageJsonPath, 'utf8');
       packageJson = JSON.parse(packageJsonContent);
-    } catch (error) {
+    } catch {
       packageJsonContent = null;
       packageJson = null;
     }
@@ -44,7 +44,7 @@ describe('package.json', () => {
     let resolvedPath;
     try {
       resolvedPath = require.resolve(mainFilePath);
-    } catch (error) {
+    } catch {
       resolvedPath = null;
     }
 
