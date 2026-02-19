@@ -1,3 +1,9 @@
+// Optimization: Activate Google Fonts immediately to improve FCP
+const googleFontsCss = document.getElementById('google-fonts-css');
+if (googleFontsCss) {
+    googleFontsCss.rel = 'stylesheet';
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // Optimization: Defer loading of Font Awesome to improve initial load performance
     const loadFontAwesome = () => {
