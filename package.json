@@ -3,15 +3,20 @@
   "version": "1.0.0",
   "description": "Personal website",
   "main": "index.js",
-  "dependencies": {
-    "eslint": "^4.19.1",
-    "git-pages": "^0.8.1"
-  },
   "devDependencies": {
-    "jest": "^29.0.0"
+    "@eslint/js": "^9.27.0",
+    "chai": "^4.5.0",
+    "eslint": "^9.27.0",
+    "globals": "^17.3.0",
+    "http-server": "^14.1.1",
+    "jsdom": "^25.0.1",
+    "mocha": "^10.8.2",
+    "playwright": "^1.58.2"
   },
   "scripts": {
-    "test": "jest"
+    "start": "http-server .",
+    "test": "node test/validate-package-json.js && mocha test/*.test.js && node test/check_resources.js",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",

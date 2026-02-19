@@ -1,15 +1,67 @@
+const { expect } = require('chai');
+const { JSDOM } = require('jsdom');
 const fs = require('fs');
 const path = require('path');
 
-describe('Basic Site Checks', () => {
-  test('index.html should exist', () => {
-    const indexPath = path.resolve(__dirname, '../index.html');
-    expect(fs.existsSync(indexPath)).toBe(true);
+describe('index.html structure', () => {
+  let html;
+  let dom;
+  let document;
+
+  before(() => {
+    html = fs.readFileSync(path.resolve(__dirname, '../index.html'), 'utf8');
+    dom = new JSDOM(html);
+    document = dom.window.document;
   });
 
-  test('index.html should have correct title', () => {
-    const indexPath = path.resolve(__dirname, '../index.html');
-    const content = fs.readFileSync(indexPath, 'utf8');
-    expect(content).toMatch(/<title>Hello World!<\/title>/);
+  it('should have a DOCTYPE', () => {
+    expect(dom.window.document.doctype).to.not.be.null;
+    expect(dom.window.document.doctype.name).to.equal('html');
+  });
+
+  it('should have an <html> tag', () => {
+    expect(document.querySelector('html')).to.not.be.null;
+    // Check for explicit tag in source
+    expect(html).to.match(/<html.*?>/i);
+  });
+
+  it('should have a <head> tag', () => {
+    expect(document.querySelector('head')).to.not.be.null;
+    expect(html).to.match(/<head.*?>/i);
+  });
+
+  it('should have a <body> tag', () => {
+    expect(document.querySelector('body')).to.not.be.null;
+    expect(html).to.match(/<body.*?>/i);
+  });
+
+  it('should have a <title> tag with content', () => {
+    const title = document.querySelector('title');
+    expect(title).to.not.be.null;
+    expect(title.textContent).to.not.be.empty;
+  });
+
+  it('should have essential meta tags', () => {
+    const charset = document.querySelector('meta[charset]');
+    const viewport = document.querySelector('meta[name="viewport"]');
+    const compatible = document.querySelector('meta[http-equiv="X-UA-Compatible"]');
+
+    expect(charset, 'charset meta tag').to.not.be.null;
+    expect(viewport, 'viewport meta tag').to.not.be.null;
+    expect(compatible, 'X-UA-Compatible meta tag').to.not.be.null;
+  });
+
+  it('should have rel="noopener noreferrer" on external links', () => {
+    const externalLinks = Array.from(document.querySelectorAll('a')).filter(a => {
+      const href = a.getAttribute('href');
+      return href && (href.startsWith('http') || href.startsWith('//'));
+    });
+
+    externalLinks.forEach(link => {
+      const rel = link.getAttribute('rel');
+      expect(rel, `Link to ${link.href} needs rel="noopener noreferrer"`).to.not.be.null;
+      expect(rel, `Link to ${link.href} needs rel="noopener noreferrer"`).to.contain('noopener');
+      expect(rel, `Link to ${link.href} needs rel="noopener noreferrer"`).to.contain('noreferrer');
+    });
   });
 });
