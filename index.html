@@ -6,14 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sean Wu - Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <nav>
+        <nav class="navbar">
             <div class="logo">
-                <h1>Sean Wu</h1>
+                <a href="#home"><h1>Sean Wu</h1></a>
             </div>
-            <ul>
+            <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
@@ -24,69 +25,89 @@
         </nav>
     </header>
 
-    <section id="home" class="hero">
-        <h1>Hi, I'm Sean Wu</h1>
-        <p>I am a Content Engineer at Apple News.</p>
-        <a href="#projects" class="btn">View My Work</a>
-    </section>
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Hi, I'm <span class="highlight">Sean Wu</span></h1>
+                <p class="hero-subtitle">I am a Content Engineer at Apple News.</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn primary-btn">View My Work</a>
+                    <a href="#contact" class="btn secondary-btn">Contact Me</a>
+                </div>
+            </div>
+        </section>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <div class="content about-container">
-            <div class="about-image">
-                <img src="images/headshot.jpg" alt="Sean Wu Headshot">
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-content">
+                    <div class="about-image-wrapper">
+                        <img src="images/headshot.jpg" alt="Sean Wu Headshot" class="about-img">
+                    </div>
+                    <div class="about-text">
+                        <p>Hello! I'm Sean Wu, a Content Engineer at Apple News. I've been with Apple Inc for 7 years, focusing on delivering high-quality content experiences.</p>
+                    </div>
+                </div>
             </div>
-            <div class="about-text">
-                <p>Hello! I'm Sean Wu, a Content Engineer at Apple News. I've been with Apple Inc for 7 years, focusing on delivering high-quality content experiences.</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="skills">
-        <h2>Skills</h2>
-        <div class="skills-grid">
-            <span class="skill-tag">HTML5</span>
-            <span class="skill-tag">CSS3</span>
-            <span class="skill-tag">JavaScript</span>
-            <span class="skill-tag">React</span>
-            <span class="skill-tag">AngularJS</span>
-            <span class="skill-tag">Node.js</span>
-            <span class="skill-tag">Ruby</span>
-            <span class="skill-tag">Git</span>
-        </div>
-    </section>
+        <section id="skills" class="skills">
+            <div class="container">
+                <h2 class="section-title">Skills</h2>
+                <div class="skills-wrapper">
+                    <span class="skill-tag">HTML5</span>
+                    <span class="skill-tag">CSS3</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">AngularJS</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">Ruby</span>
+                    <span class="skill-tag">Git</span>
+                </div>
+            </div>
+        </section>
 
-    <section id="projects">
-        <h2>My Projects</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <h3>WowFolio</h3>
-                <p>Wowfolio 🦄 - A Simple & Clean Portfolio Template For Developers 👨‍💻</p>
-                <a href="https://github.com/xiaogwu/WowFolio" class="project-link" target="_blank" rel="noopener noreferrer">View Code</a>
+        <section id="projects" class="projects">
+            <div class="container">
+                <h2 class="section-title">My Projects</h2>
+                <div class="projects-grid">
+                    <article class="project-card">
+                        <div class="project-info">
+                            <h3>WowFolio</h3>
+                            <p>Wowfolio 🦄 - A Simple & Clean Portfolio Template For Developers 👨‍💻</p>
+                            <a href="https://github.com/xiaogwu/WowFolio" class="project-link" target="_blank" rel="noopener noreferrer">View Code</a>
+                        </div>
+                    </article>
+                    <article class="project-card">
+                        <div class="project-info">
+                            <h3>react-onclickoutside</h3>
+                            <p>An onClickOutside wrapper for React components</p>
+                            <a href="https://github.com/xiaogwu/react-onclickoutside" class="project-link" target="_blank" rel="noopener noreferrer">View Code</a>
+                        </div>
+                    </article>
+                    <article class="project-card">
+                        <div class="project-info">
+                            <h3>angular-xeditable</h3>
+                            <p>Edit in place for AngularJS</p>
+                            <a href="https://github.com/xiaogwu/angular-xeditable" class="project-link" target="_blank" rel="noopener noreferrer">View Code</a>
+                        </div>
+                    </article>
+                </div>
             </div>
-            <div class="project-card">
-                <h3>react-onclickoutside</h3>
-                <p>An onClickOutside wrapper for React components</p>
-                <a href="https://github.com/xiaogwu/react-onclickoutside" class="project-link" target="_blank" rel="noopener noreferrer">View Code</a>
-            </div>
-            <div class="project-card">
-                <h3>angular-xeditable</h3>
-                <p>Edit in place for AngularJS</p>
-                <a href="https://github.com/xiaogwu/angular-xeditable" class="project-link" target="_blank" rel="noopener noreferrer">View Code</a>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="contact">
-        <h2>Get In Touch</h2>
-        <p>My inbox is always open. Whether you have a question or just want to say hi, I'll try my best to get back to you!</p>
-        <br>
-        <div class="social-links">
-            <a href="https://github.com/xiaogwu" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a href="https://www.linkedin.com/in/xiaogwu" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href="mailto:xiaogwu@gmail.com">Email</a>
-        </div>
-    </section>
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="contact-text">My inbox is always open. Whether you have a question or just want to say hi, I'll try my best to get back to you!</p>
+                <div class="social-links">
+                    <a href="https://github.com/xiaogwu" target="_blank" rel="noopener noreferrer" aria-label="GitHub">GitHub</a>
+                    <a href="https://www.linkedin.com/in/xiaogwu" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>
+                    <a href="mailto:xiaogwu@gmail.com" aria-label="Email">Email</a>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <p>&copy; 2023 Sean Wu. All rights reserved.</p>
