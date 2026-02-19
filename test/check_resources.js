@@ -1,7 +1,8 @@
 const fs = require('fs');
 const path = require('path');
+const { JSDOM } = require('jsdom');
 
-const htmlFile = path.join(__dirname, '..', 'index.html');
+const htmlFile = path.resolve(__dirname, '../index.html');
 
 if (!fs.existsSync(htmlFile)) {
   console.error('Error: index.html not found!');
@@ -9,45 +10,51 @@ if (!fs.existsSync(htmlFile)) {
 }
 
 const htmlContent = fs.readFileSync(htmlFile, 'utf8');
-
-// remove comments
-const cleanContent = htmlContent.replace(/<!--[\s\S]*?-->/g, '');
+const dom = new JSDOM(htmlContent);
+const document = dom.window.document;
 
 const failures = [];
 
-function checkResource(tagRegex, attributeName, type) {
-  let match;
-  while ((match = tagRegex.exec(cleanContent)) !== null) {
-    const tag = match[0];
-    // simpler regex for attribute extraction:
-    const attributeMatch = tag.match(new RegExp(`${attributeName}=["']([^"']+)["']`, 'i'));
+function checkPath(resourcePath, type) {
+  if (!resourcePath) return;
+  if (resourcePath.startsWith('http') || resourcePath.startsWith('//') || resourcePath.startsWith('#') || resourcePath.startsWith('mailto:')) {
+    return;
+  }
 
-    if (attributeMatch) {
-      const resourcePath = attributeMatch[1];
+  // Resolve path relative to project root (where index.html is)
+  // path.join handles both relative (style.css) and absolute-like (/style.css) paths correctly for this context
+  // assuming root-relative paths point to the project root.
+  const absolutePath = path.resolve(__dirname, '..', resourcePath.replace(/^\//, ''));
 
-      if (resourcePath.startsWith('http') || resourcePath.startsWith('//') || resourcePath.startsWith('#') || resourcePath.startsWith('mailto:')) {
-        continue;
-      }
-
-      const filePath = path.join(__dirname, '..', resourcePath);
-      if (!fs.existsSync(filePath)) {
-        failures.push(`${type} resource not found: ${resourcePath}`);
-      }
-    }
+  if (!fs.existsSync(absolutePath)) {
+    failures.push(`${type} resource not found: ${resourcePath} (resolved to ${absolutePath})`);
   }
 }
 
-// Regex to find tags
-// <link ... >
-const linkTagRegex = /<link\s+[^>]*>/gi;
-// <script ... >
-const scriptTagRegex = /<script\s+[^>]*>/gi;
-// <img ... >
-const imgTagRegex = /<img\s+[^>]*>/gi;
+// Check <link href="...">
+document.querySelectorAll('link[href]').forEach(el => {
+  checkPath(el.getAttribute('href'), 'Link');
+});
 
-checkResource(linkTagRegex, 'href', 'Link');
-checkResource(scriptTagRegex, 'src', 'Script');
-checkResource(imgTagRegex, 'src', 'Image');
+// Check <script src="...">
+document.querySelectorAll('script[src]').forEach(el => {
+  checkPath(el.getAttribute('src'), 'Script');
+});
+
+// Check <img src="...">
+document.querySelectorAll('img[src]').forEach(el => {
+  checkPath(el.getAttribute('src'), 'Image');
+});
+
+// Check <video src="...">
+document.querySelectorAll('video[src]').forEach(el => {
+  checkPath(el.getAttribute('src'), 'Video');
+});
+
+// Check <source src="...">
+document.querySelectorAll('source[src]').forEach(el => {
+  checkPath(el.getAttribute('src'), 'Source');
+});
 
 if (failures.length > 0) {
   console.error('Resource verification failed:');
