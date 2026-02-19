@@ -90,7 +90,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typographySelect) {
         const TYPOGRAPHY_STORAGE_KEY = 'typography-preference';
         const savedTypography = localStorage.getItem(TYPOGRAPHY_STORAGE_KEY);
-        const initialTypography = savedTypography || 'modern';
+
+        // Security: Whitelist allowed values to prevent invalid classes
+        const allowedTypographies = ['system', 'modern', 'classic', 'tech'];
+        const initialTypography = allowedTypographies.includes(savedTypography) ? savedTypography : 'modern';
 
         // Apply initial typography
         typographySelect.value = initialTypography;
@@ -100,6 +103,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         typographySelect.addEventListener('change', (e) => {
             const selectedTheme = e.target.value;
+
+            // Validate selection
+            if (!allowedTypographies.includes(selectedTheme)) return;
 
             // Save preference
             localStorage.setItem(TYPOGRAPHY_STORAGE_KEY, selectedTheme);
