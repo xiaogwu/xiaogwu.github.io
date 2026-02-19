@@ -15,7 +15,7 @@ describe('Performance Optimization', () => {
   });
 
   it('should lazy load the about image', () => {
-    const aboutImage = document.querySelector('#about .about-image img');
+    const aboutImage = document.querySelector('#about .about-image-wrapper img');
     expect(aboutImage).to.not.be.null;
     expect(aboutImage.getAttribute('loading')).to.equal('lazy');
   });
