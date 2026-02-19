@@ -2,7 +2,6 @@
   "name": "xiaogwu.github.io",
   "version": "1.0.0",
   "description": "Personal website",
-  "main": "index.js",
   "devDependencies": {
     "@eslint/js": "^9.27.0",
     "chai": "^4.5.0",
