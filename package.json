@@ -6,11 +6,17 @@
   "dependencies": {},
   "devDependencies": {
     "eslint": "^4.19.1",
-    "http-server": "^14.1.1"
+    "http-server": "^14.1.1",
+    "chai": "^4.3.7",
+    "jsdom": "^22.1.0",
+    "mocha": "^10.2.0"
   },
   "scripts": {
     "start": "http-server .",
-    "test": "node test/validate-package-json.js"
+    "test": "npm run test:validate-json && npm run test:resources && npm run test:mocha",
+    "test:validate-json": "node test/validate-package-json.js",
+    "test:resources": "node test/check_resources.js",
+    "test:mocha": "mocha test/*.test.js"
   },
   "repository": {
     "type": "git",
