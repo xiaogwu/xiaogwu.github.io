@@ -50,7 +50,18 @@ describe('Performance Optimization', () => {
     expect(fontAwesomeFallbackFound, 'Font Awesome fallback should exist in noscript').to.be.true;
   });
 
-  xit('should not block rendering with Google Fonts', () => {
+  it('should not block rendering with Google Fonts', () => {
+      // Check that there is no blocking stylesheet link for Google Fonts outside of noscript
+      const links = document.querySelectorAll('link[rel="stylesheet"][href*="fonts.googleapis.com"]');
+      let blockingFound = false;
+      links.forEach(link => {
+          // If the link is not inside a noscript tag, it's blocking
+          if (!link.closest('noscript')) {
+              blockingFound = true;
+          }
+      });
+      expect(blockingFound, 'Google Fonts should not be loaded as a blocking stylesheet').to.be.false;
+
       // Check for preload link
       const preloadLink = document.querySelector('link[rel="preload"][id="google-fonts-css"][as="style"]');
       expect(preloadLink, 'Google Fonts should be preloaded with id google-fonts-css').to.not.be.null;
