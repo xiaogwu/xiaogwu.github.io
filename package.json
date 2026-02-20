@@ -8,13 +8,12 @@
     "chai": "^4.5.0",
     "eslint": "^9.27.0",
     "globals": "^17.3.0",
-    "http-server": "^14.1.1",
     "jsdom": "^25.0.1",
     "mocha": "^10.8.2",
     "playwright": "^1.58.2"
   },
   "scripts": {
-    "start": "http-server .",
+    "start": "npx serve .",
     "test": "mocha test/*.test.js && node test/check_resources.js",
     "lint": "eslint ."
   },

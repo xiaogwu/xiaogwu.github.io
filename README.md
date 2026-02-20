@@ -24,7 +24,7 @@ A personal portfolio website for Sean Wu, a Content Engineer at Apple News and S
 
 ## Setup and Usage
 
-To run the project locally, you can use `http-server` or any other static file server.
+To run the project locally, you can use `serve` or any other static file server.
 
 1.  Clone the repository:
     ```bash

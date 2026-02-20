@@ -3,7 +3,7 @@ const { spawn } = require('child_process');
 
 (async () => {
   // Start the server
-  const server = spawn('npx', ['http-server', '-p', '8080'], {
+  const server = spawn('npx', ['serve', '-l', '8080'], {
     stdio: 'ignore',
     shell: true
   });

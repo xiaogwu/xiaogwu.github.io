@@ -7,7 +7,7 @@ import time
 
 async def run():
     # Start the server
-    server_process = subprocess.Popen(["npx", "http-server", "-p", "8081"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    server_process = subprocess.Popen(["npx", "serve", "-l", "8081"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     # Wait for server to start
     time.sleep(2)
 

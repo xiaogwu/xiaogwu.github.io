@@ -8,7 +8,7 @@ describe('SRI Integrity Check', function() {
   const port = 8083;
 
   before(async () => {
-    server = spawn('npx', ['http-server', '-p', port], { stdio: 'ignore', shell: true, detached: true });
+    server = spawn('npx', ['serve', '-l', port], { stdio: 'ignore', shell: true, detached: true });
     await new Promise(resolve => setTimeout(resolve, 2000));
     browser = await chromium.launch();
     page = await browser.newPage();
