@@ -7,7 +7,7 @@ A personal portfolio website for Sean Wu, a Content Engineer at Apple News and S
 ## Features
 
 - **Responsive Design:** The layout adjusts seamlessly to different screen sizes, from desktop to mobile.
-- **Dark/Light Mode:** Includes a theme toggle to switch between dark and light modes.
+- **Dark/Light Mode:** Automatically sets theme based on time of day (light 6AM–6PM, dark otherwise), with a manual toggle to override.
 - **Typography Selection:** Users can choose from different typography styles (System, Modern, Classic, Tech).
 - **Smooth Scrolling:** Navigation links smooth scroll to the corresponding section.
 - **Projects Showcase:** Highlights key projects with links to code repositories.
