@@ -48,6 +48,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentHour = new Date().getHours();
         const isDayTime = currentHour >= 6 && currentHour < 18; // 6 AM to 6 PM
 
+        // Transfer early theme class from <html> to <body> and clean up
+        document.documentElement.classList.remove('light-mode-early');
+
         // Apply initial theme
         if (isDayTime) {
             body.classList.add('light-mode');
@@ -137,8 +140,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const backToTopButton = document.getElementById('back-to-top');
 
     if (backToTopButton) {
+        const footer = document.querySelector('footer');
+
         const toggleBackToTop = () => {
-            if (window.scrollY > 300) {
+            const scrolledPastThreshold = window.scrollY > 300;
+            const footerVisible = footer && (window.innerHeight + window.scrollY) >= footer.offsetTop;
+
+            if (scrolledPastThreshold && !footerVisible) {
                 backToTopButton.classList.add('visible');
             } else {
                 backToTopButton.classList.remove('visible');
