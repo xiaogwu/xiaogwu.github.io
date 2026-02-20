@@ -32,8 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    console.log('Script loaded successfully.');
-
     // Theme Toggle Logic
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
