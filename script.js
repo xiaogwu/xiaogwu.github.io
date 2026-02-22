@@ -160,4 +160,12 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // Email Obfuscation
+    const emailLink = document.getElementById('email-link');
+    if (emailLink) {
+        const user = 'xiaogwu';
+        const domain = 'gmail.com';
+        emailLink.href = `mailto:${user}@${domain}`;
+    }
 });
