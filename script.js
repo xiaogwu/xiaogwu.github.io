@@ -134,6 +134,12 @@ document.addEventListener('DOMContentLoaded', () => {
         appleTenureElement.textContent = years;
     }
 
+    // Dynamic Copyright Year
+    const copyrightYearElement = document.getElementById('copyright-year');
+    if (copyrightYearElement) {
+        copyrightYearElement.textContent = new Date().getFullYear();
+    }
+
     // Back to Top Button Logic
     const backToTopButton = document.getElementById('back-to-top');
 
