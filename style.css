@@ -107,6 +107,18 @@ body.light-mode {
     --mobile-menu-bg: rgba(248, 250, 252, 0.98);
 }
 
+/* Early light mode applied to <html> before body is parsed */
+.light-mode-early,
+.light-mode-early body {
+    --bg-color: #f8fafc;
+    --text-color: #0f172a;
+    --header-bg: rgba(248, 250, 252, 0.85);
+    --header-text: #0f172a;
+    --nav-link-color: #0f172a;
+    --nav-link-hover-color: #d4a017;
+    --accent-color: #d4a017;
+}
+
 body {
     font-family: var(--body-font);
     line-height: 1.6;
