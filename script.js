@@ -19,15 +19,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-
             const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
 
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth'
-                });
+            // Only hijack click if it's an internal link
+            if (targetId && targetId.startsWith('#')) {
+                e.preventDefault();
+
+                const id = targetId.substring(1);
+                // Use getElementById for security (avoid selector injection) and robustness
+                const targetElement = id ? document.getElementById(id) : null;
+
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
             }
         });
     });
