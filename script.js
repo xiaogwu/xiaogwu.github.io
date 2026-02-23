@@ -42,11 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
             themeToggle.textContent = isLight ? '☀️' : '🌙';
         };
 
-        // Check local time for initial theme by checking the class applied by inline script
-        const isDayTime = document.documentElement.classList.contains('light-mode-early');
-
-        // Transfer early theme class from <html> to <body> and clean up
-        document.documentElement.classList.remove('light-mode-early');
+        // Check local time for initial theme
+        const currentHour = new Date().getHours();
+        const isDayTime = currentHour >= 6 && currentHour < 18; // 6 AM to 6 PM
 
         // Apply initial theme
         if (isDayTime) {

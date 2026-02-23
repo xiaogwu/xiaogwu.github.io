@@ -41,50 +41,8 @@ describe('Theme Logic in script.js', () => {
         window.scrollTo = () => {};
     });
 
-    it('should respect light-mode-early class even if time suggests dark mode', () => {
-        // Setup: Add light-mode-early to html
-        document.documentElement.classList.add('light-mode-early');
-
-        // Setup: Mock Date to return 20:00 (8 PM) - Night time
-        // We need to override the Date constructor in the window context
-        const OriginalDate = window.Date;
-        window.Date = class extends OriginalDate {
-            constructor() {
-                super();
-            }
-            getHours() {
-                return 20;
-            }
-        };
-
-        // Execute script.js
-        const scriptElement = document.createElement('script');
-        scriptElement.textContent = scriptContent;
-        document.body.appendChild(scriptElement);
-
-        // Trigger DOMContentLoaded
-        const event = new window.Event('DOMContentLoaded');
-        document.dispatchEvent(event);
-
-        // Assertions
-        const body = document.body;
-        const themeToggle = document.getElementById('theme-toggle');
-
-        // Should be light mode because of the class, ignoring the time
-        expect(body.classList.contains('light-mode')).to.be.true;
-
-        // Icon should be sun
-        expect(themeToggle.textContent).to.equal('☀️');
-
-        // light-mode-early should be removed
-        expect(document.documentElement.classList.contains('light-mode-early')).to.be.false;
-    });
-
-    it('should respect absence of light-mode-early class even if time suggests light mode', () => {
-        // Setup: Ensure NO light-mode-early on html
-        document.documentElement.classList.remove('light-mode-early');
-
-        // Setup: Mock Date to return 10:00 (10 AM) - Day time
+    it('should set light mode if time is between 6 AM and 6 PM', () => {
+        // Setup: Mock Date to return 10:00 (10 AM)
         const OriginalDate = window.Date;
         window.Date = class extends OriginalDate {
             constructor() {
@@ -108,10 +66,36 @@ describe('Theme Logic in script.js', () => {
         const body = document.body;
         const themeToggle = document.getElementById('theme-toggle');
 
-        // Should be dark mode because of missing class, ignoring the time
-        expect(body.classList.contains('light-mode')).to.be.false;
+        expect(body.classList.contains('light-mode')).to.be.true;
+        expect(themeToggle.textContent).to.equal('☀️');
+    });
 
-        // Icon should be moon
+    it('should set dark mode if time is after 6 PM', () => {
+        // Setup: Mock Date to return 20:00 (8 PM)
+        const OriginalDate = window.Date;
+        window.Date = class extends OriginalDate {
+            constructor() {
+                super();
+            }
+            getHours() {
+                return 20;
+            }
+        };
+
+        // Execute script.js
+        const scriptElement = document.createElement('script');
+        scriptElement.textContent = scriptContent;
+        document.body.appendChild(scriptElement);
+
+        // Trigger DOMContentLoaded
+        const event = new window.Event('DOMContentLoaded');
+        document.dispatchEvent(event);
+
+        // Assertions
+        const body = document.body;
+        const themeToggle = document.getElementById('theme-toggle');
+
+        expect(body.classList.contains('light-mode')).to.be.false;
         expect(themeToggle.textContent).to.equal('🌙');
     });
 });
