@@ -41,6 +41,11 @@ describe('Content Security Policy', function() {
     });
     await page.goto(`http://localhost:${port}`);
     await new Promise(resolve => setTimeout(resolve, 2000));
-    expect(errors, 'CSP violations detected').to.be.empty;
+    if (errors.length > 0) {
+      console.log('CSP Violations found:', errors);
+    }
+    // Filter out expected warning about frame-ancestors if it appears as error (unlikely but possible)
+    const filteredErrors = errors.filter(e => !e.includes("'frame-ancestors' is ignored"));
+    expect(filteredErrors, 'CSP violations detected').to.be.empty;
   });
 });
