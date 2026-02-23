@@ -4,8 +4,7 @@ const { spawn } = require('child_process');
 (async () => {
   // Start the server
   const server = spawn('npx', ['serve', '-l', '8080'], {
-    stdio: 'ignore',
-    shell: true
+    stdio: 'ignore'
   });
 
   console.log('Server started on port 8080');
