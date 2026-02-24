@@ -1,5 +1,6 @@
 const { chromium } = require('playwright');
 const { spawn } = require('child_process');
+const path = require('path');
 
 (async () => {
   // Start the server
@@ -21,7 +22,12 @@ const { spawn } = require('child_process');
     await page.goto('http://localhost:8080');
 
     // Take screenshot
-    const screenshotPath = process.argv[2] || 'screenshot.png';
+    // Sanitized input
+    const arg = process.argv[2] || 'screenshot.png';
+    const filename = path.basename(arg);
+    const safeFilename = filename.endsWith('.png') ? filename : `${filename}.png`;
+    const screenshotPath = path.join(process.cwd(), safeFilename);
+
     await page.screenshot({ path: screenshotPath, fullPage: true });
     console.log(`Screenshot saved to ${screenshotPath}`);
 
