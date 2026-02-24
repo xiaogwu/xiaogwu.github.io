@@ -12,7 +12,7 @@ describe('Dynamic Tenure Calculation', () => {
     scriptContent = fs.readFileSync(path.resolve(__dirname, '../script.js'), 'utf8');
   });
 
-  it('should display 7 years in Feb 2026', () => {
+  const createTestEnvironment = (currentDateString) => {
     const dom = new JSDOM(html, {
       runScripts: "dangerously",
       url: "http://localhost"
@@ -20,15 +20,25 @@ describe('Dynamic Tenure Calculation', () => {
     const { window } = dom;
     const { document } = window;
 
-    // Mock Date in the window context
-    // We need to override Date before the script runs.
-    // But we are running script via script tag injection or eval.
+    // Mock Date
+    const originalDate = window.Date;
+    const fixedTime = new Date(currentDateString).getTime();
 
-    // Let's inject a script that overrides Date first?
-    // Or just rely on the fact that JSDOM uses the system time by default?
-    // And system time is 2026.
+    // Override Date constructor
+    window.Date = class extends originalDate {
+      constructor(...args) {
+        if (args.length === 0) {
+          return new originalDate(fixedTime);
+        }
+        return new originalDate(...args);
+      }
 
-    // Execute script
+      static now() {
+        return fixedTime;
+      }
+    };
+
+    // Inject script content
     const scriptEl = document.createElement('script');
     scriptEl.textContent = scriptContent;
     document.body.appendChild(scriptEl);
@@ -36,11 +46,41 @@ describe('Dynamic Tenure Calculation', () => {
     // Trigger DOMContentLoaded
     document.dispatchEvent(new window.Event('DOMContentLoaded'));
 
-    const tenureSpan = document.getElementById('apple-tenure');
-    // Start date 2018-11-26 (Monday after Thanksgiving)
-    // Current date (system) 2026-02-16
-    // Expected: 7 (Nov 2018 -> Nov 2025 = 7 years. Feb 2026 < Nov 2026, so still 7)
-    expect(tenureSpan.textContent).to.equal('7');
+    return document.getElementById('apple-tenure').textContent;
+  };
+
+  it('should calculate tenure correctly before anniversary (Oct 26, 2025 -> 6 years)', () => {
+    const result = createTestEnvironment('2025-10-26T12:00:00Z');
+    expect(result).to.equal('6');
   });
 
+  it('should calculate tenure correctly on anniversary (Nov 26, 2025 -> 7 years)', () => {
+    const result = createTestEnvironment('2025-11-26T12:00:00Z');
+    expect(result).to.equal('7');
+  });
+
+  it('should calculate tenure correctly after anniversary (Dec 26, 2025 -> 7 years)', () => {
+    const result = createTestEnvironment('2025-12-26T12:00:00Z');
+    expect(result).to.equal('7');
+  });
+
+  it('should calculate tenure correctly next year before anniversary (Jan 26, 2026 -> 7 years)', () => {
+    const result = createTestEnvironment('2026-01-26T12:00:00Z');
+    expect(result).to.equal('7');
+  });
+
+  it('should calculate tenure correctly next year after anniversary (Dec 26, 2026 -> 8 years)', () => {
+    const result = createTestEnvironment('2026-12-26T12:00:00Z');
+    expect(result).to.equal('8');
+  });
+
+  it('should calculate tenure correctly on day before anniversary (Nov 25, 2025 -> 6 years)', () => {
+    const result = createTestEnvironment('2025-11-25T12:00:00Z');
+    expect(result).to.equal('6');
+  });
+
+  it('should calculate tenure correctly on day after anniversary (Nov 27, 2025 -> 7 years)', () => {
+    const result = createTestEnvironment('2025-11-27T12:00:00Z');
+    expect(result).to.equal('7');
+  });
 });
