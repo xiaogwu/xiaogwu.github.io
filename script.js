@@ -12,9 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            const targetId = this.getAttribute('href');
+    document.addEventListener('click', function (e) {
+        const anchor = e.target.closest('a[href^="#"]');
+        if (anchor) {
+            const targetId = anchor.getAttribute('href');
 
             // Only hijack click if it's an internal link
             if (targetId && targetId.startsWith('#')) {
@@ -30,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 }
             }
-        });
+        }
     });
 
     // Theme Toggle Logic
