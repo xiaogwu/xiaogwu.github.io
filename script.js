@@ -145,11 +145,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (backToTopButton) {
         const footer = document.querySelector('footer');
+        let scrolledPastThreshold = false;
+        let footerVisible = false;
 
-        const toggleBackToTop = () => {
-            const scrolledPastThreshold = window.scrollY > 300;
-            const footerVisible = footer && (window.innerHeight + window.scrollY) >= footer.offsetTop;
-
+        const updateButtonVisibility = () => {
             if (scrolledPastThreshold && !footerVisible) {
                 backToTopButton.classList.add('visible');
             } else {
@@ -157,7 +156,39 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
-        window.addEventListener('scroll', toggleBackToTop);
+        // Create a sentinel element to track scroll position (top 300px)
+        const sentinel = document.createElement('div');
+        sentinel.style.position = 'absolute';
+        sentinel.style.top = '0';
+        sentinel.style.left = '0';
+        sentinel.style.width = '1px';
+        sentinel.style.height = '300px';
+        sentinel.style.pointerEvents = 'none';
+        sentinel.style.visibility = 'hidden';
+        sentinel.style.zIndex = '-1';
+        document.body.prepend(sentinel);
+
+        const observerOptions = {
+            root: null,
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.target === sentinel) {
+                    // If sentinel is NOT intersecting, we are past 300px (scrolled down)
+                    scrolledPastThreshold = !entry.isIntersecting;
+                } else if (entry.target === footer) {
+                    footerVisible = entry.isIntersecting;
+                }
+            });
+            updateButtonVisibility();
+        }, observerOptions);
+
+        observer.observe(sentinel);
+        if (footer) {
+            observer.observe(footer);
+        }
 
         backToTopButton.addEventListener('click', () => {
             window.scrollTo({
