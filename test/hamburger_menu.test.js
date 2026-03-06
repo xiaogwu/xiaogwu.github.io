@@ -16,6 +16,7 @@ describe('Hamburger Menu', () => {
     html = fs.readFileSync(path.resolve(__dirname, '../index.html'), 'utf8');
     // Remove CSP to allow inline script injection for testing
     html = html.replace(/<meta http-equiv="Content-Security-Policy"[^>]*>/, '');
+    html = html.replace('<script src="script.js"></script>', '');
     scriptContent = fs.readFileSync(path.resolve(__dirname, '../script.js'), 'utf8');
   });
 
@@ -35,6 +36,7 @@ describe('Hamburger Menu', () => {
 
     // Trigger DOMContentLoaded
     document.dispatchEvent(new window.Event('DOMContentLoaded'));
+    window.HTMLElement.prototype.scrollIntoView = function() {};
 
     hamburger = document.querySelector('.hamburger');
     navLinks = document.querySelector('.nav-links');
