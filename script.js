@@ -1,3 +1,6 @@
+// Configuration Constants
+const SCROLL_THRESHOLD = 300;
+
 // Optimization: Activate Google Fonts immediately to improve FCP
 const googleFontsCss = document.getElementById('google-fonts-css');
 if (googleFontsCss) {
@@ -147,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const footer = document.querySelector('footer');
 
         const toggleBackToTop = () => {
-            const scrolledPastThreshold = window.scrollY > 300;
+            const scrolledPastThreshold = window.scrollY > SCROLL_THRESHOLD;
             const footerVisible = footer && (window.innerHeight + window.scrollY) >= footer.offsetTop;
 
             if (scrolledPastThreshold && !footerVisible) {
