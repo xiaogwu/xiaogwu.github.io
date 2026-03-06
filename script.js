@@ -1,3 +1,6 @@
+// Configuration Constants
+const SCROLL_THRESHOLD = 300;
+
 // Optimization: Activate Google Fonts immediately to improve FCP
 const googleFontsCss = document.getElementById('google-fonts-css');
 if (googleFontsCss) {
@@ -12,9 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            const targetId = this.getAttribute('href');
+    document.addEventListener('click', function (e) {
+        const anchor = e.target.closest('a[href^="#"]');
+        if (anchor) {
+            const targetId = anchor.getAttribute('href');
 
             // Only hijack click if it's an internal link
             if (targetId && targetId.startsWith('#')) {
@@ -30,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 }
             }
-        });
+        }
     });
 
     // Theme Toggle Logic
@@ -145,6 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (backToTopButton) {
         const footer = document.querySelector('footer');
+        const SCROLL_THRESHOLD = 300;
 
         // Optimization: Use IntersectionObserver to avoid scroll event listeners and layout thrashing
         if ('IntersectionObserver' in window) {
@@ -159,14 +164,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             };
 
-            // Sentinel for top threshold (300px)
+            // Sentinel for top threshold (SCROLL_THRESHOLD)
             const sentinel = document.createElement('div');
             Object.assign(sentinel.style, {
                 position: 'absolute',
                 top: '0',
                 left: '0',
                 width: '1px',
-                height: '300px',
+                height: `${SCROLL_THRESHOLD}px`,
                 pointerEvents: 'none',
                 visibility: 'hidden',
                 zIndex: '-1'
@@ -175,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const sentinelObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    // If sentinel is NOT intersecting, we are past 300px
+                    // If sentinel is NOT intersecting, we are past SCROLL_THRESHOLD
                     scrolledPastThreshold = !entry.isIntersecting;
                     updateButton();
                 });
@@ -195,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             // Fallback for older browsers
             const toggleBackToTop = () => {
-                const scrolledPastThreshold = window.scrollY > 300;
+                const scrolledPastThreshold = window.scrollY > SCROLL_THRESHOLD;
                 const footerVisible = footer && (window.innerHeight + window.scrollY) >= footer.offsetTop;
 
                 if (scrolledPastThreshold && !footerVisible) {
