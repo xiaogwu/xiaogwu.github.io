@@ -149,7 +149,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (backToTopButton) {
         const footer = document.querySelector('footer');
-        const SCROLL_THRESHOLD = 300;
 
         // Optimization: Use IntersectionObserver to avoid scroll event listeners and layout thrashing
         if ('IntersectionObserver' in window) {
