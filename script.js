@@ -1,3 +1,6 @@
+// Configuration Constants
+const SCROLL_THRESHOLD = 300;
+
 // Optimization: Activate Google Fonts immediately to improve FCP
 const googleFontsCss = document.getElementById('google-fonts-css');
 if (googleFontsCss) {
@@ -12,9 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            const targetId = this.getAttribute('href');
+    document.addEventListener('click', function (e) {
+        const anchor = e.target.closest('a[href^="#"]');
+        if (anchor) {
+            const targetId = anchor.getAttribute('href');
 
             // Only hijack click if it's an internal link
             if (targetId && targetId.startsWith('#')) {
@@ -30,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 }
             }
-        });
+        }
     });
 
     // Theme Toggle Logic
@@ -147,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const footer = document.querySelector('footer');
 
         const toggleBackToTop = () => {
-            const scrolledPastThreshold = window.scrollY > 300;
+            const scrolledPastThreshold = window.scrollY > SCROLL_THRESHOLD;
             const footerVisible = footer && (window.innerHeight + window.scrollY) >= footer.offsetTop;
 
             if (scrolledPastThreshold && !footerVisible) {
