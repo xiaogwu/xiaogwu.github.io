@@ -44,7 +44,7 @@ describe('SRI Integrity Check', function() {
 
   it('should have SRI integrity on preload link', async () => {
       await page.goto(`http://localhost:${port}`);
-      const preloadSelector = 'link[href*="font-awesome"][rel="preload"]';
+      const preloadSelector = "link[id=\"font-awesome-css\"]";
       const integrity = await page.getAttribute(preloadSelector, 'integrity');
       const crossOrigin = await page.getAttribute(preloadSelector, 'crossorigin');
 
