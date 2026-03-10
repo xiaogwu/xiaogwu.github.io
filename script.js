@@ -1,3 +1,6 @@
+// Configuration Constants
+const SCROLL_THRESHOLD = 300;
+
 // Optimization: Activate Google Fonts immediately to improve FCP
 const googleFontsCss = document.getElementById('google-fonts-css');
 if (googleFontsCss) {
@@ -12,9 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            const targetId = this.getAttribute('href');
+    document.addEventListener('click', function (e) {
+        const anchor = e.target.closest('a[href^="#"]');
+        if (anchor) {
+            const targetId = anchor.getAttribute('href');
 
             // Only hijack click if it's an internal link
             if (targetId && targetId.startsWith('#')) {
@@ -30,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 }
             }
-        });
+        }
     });
 
     // Theme Toggle Logic
@@ -145,49 +149,60 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (backToTopButton) {
         const footer = document.querySelector('footer');
-        let scrolledPastThreshold = false;
-        let footerVisible = false;
 
-        const updateButtonVisibility = () => {
-            if (scrolledPastThreshold && !footerVisible) {
-                backToTopButton.classList.add('visible');
-            } else {
-                backToTopButton.classList.remove('visible');
-            }
-        };
+        if (typeof IntersectionObserver !== 'undefined') {
+            // Use IntersectionObserver for better performance (avoids layout thrashing on scroll)
+            let scrolledPastThreshold = false;
+            let footerVisible = false;
 
-        // Create a sentinel element to track scroll position (top 300px)
-        const sentinel = document.createElement('div');
-        sentinel.style.position = 'absolute';
-        sentinel.style.top = '0';
-        sentinel.style.left = '0';
-        sentinel.style.width = '1px';
-        sentinel.style.height = '300px';
-        sentinel.style.pointerEvents = 'none';
-        sentinel.style.visibility = 'hidden';
-        sentinel.style.zIndex = '-1';
-        document.body.prepend(sentinel);
-
-        const observerOptions = {
-            root: null,
-            threshold: 0
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.target === sentinel) {
-                    // If sentinel is NOT intersecting, we are past 300px (scrolled down)
-                    scrolledPastThreshold = !entry.isIntersecting;
-                } else if (entry.target === footer) {
-                    footerVisible = entry.isIntersecting;
+            const updateButtonVisibility = () => {
+                if (scrolledPastThreshold && !footerVisible) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
                 }
-            });
-            updateButtonVisibility();
-        }, observerOptions);
+            };
 
-        observer.observe(sentinel);
-        if (footer) {
-            observer.observe(footer);
+            const sentinel = document.createElement('div');
+            sentinel.style.position = 'absolute';
+            sentinel.style.top = '0';
+            sentinel.style.left = '0';
+            sentinel.style.width = '1px';
+            sentinel.style.height = `${SCROLL_THRESHOLD}px`;
+            sentinel.style.pointerEvents = 'none';
+            sentinel.style.visibility = 'hidden';
+            sentinel.style.zIndex = '-1';
+            document.body.prepend(sentinel);
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.target === sentinel) {
+                        scrolledPastThreshold = !entry.isIntersecting;
+                    } else if (entry.target === footer) {
+                        footerVisible = entry.isIntersecting;
+                    }
+                });
+                updateButtonVisibility();
+            }, { root: null, threshold: 0 });
+
+            observer.observe(sentinel);
+            if (footer) {
+                observer.observe(footer);
+            }
+        } else {
+            // Fallback for environments without IntersectionObserver
+            const toggleBackToTop = () => {
+                const scrolledPastThreshold = window.scrollY > SCROLL_THRESHOLD;
+                const footerVisible = footer && (window.innerHeight + window.scrollY) >= footer.offsetTop;
+
+                if (scrolledPastThreshold && !footerVisible) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            };
+
+            window.addEventListener('scroll', toggleBackToTop);
         }
 
         backToTopButton.addEventListener('click', () => {

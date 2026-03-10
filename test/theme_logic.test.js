@@ -83,6 +83,30 @@ describe('Theme Logic in script.js', () => {
         // Setup: Ensure NO light-mode-early on html
         document.documentElement.classList.remove('light-mode-early');
 
+        // Execute script.js
+        const scriptElement = document.createElement('script');
+        scriptElement.textContent = scriptContent;
+        document.body.appendChild(scriptElement);
+
+        // Trigger DOMContentLoaded
+        const event = new window.Event('DOMContentLoaded');
+        document.dispatchEvent(event);
+
+        // Assertions
+        const body = document.body;
+        const themeToggle = document.getElementById('theme-toggle');
+
+        // Should be dark mode because of missing class, ignoring the time
+        expect(body.classList.contains('light-mode')).to.be.false;
+
+        // Icon should be moon
+        expect(themeToggle.textContent).to.equal('🌙');
+    });
+
+    it('should toggle theme and update icon when button is clicked', () => {
+        // Setup: Ensure NO light-mode-early on html
+        document.documentElement.classList.remove('light-mode-early');
+
         // Setup: Mock Date to return 10:00 (10 AM) - Day time
         const OriginalDate = window.Date;
         window.Date = class extends OriginalDate {
@@ -103,14 +127,21 @@ describe('Theme Logic in script.js', () => {
         const event = new window.Event('DOMContentLoaded');
         document.dispatchEvent(event);
 
-        // Assertions
-        const body = document.body;
         const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
 
-        // Should be dark mode because of missing class, ignoring the time
+        // Initial state (dark mode because no light-mode-early)
         expect(body.classList.contains('light-mode')).to.be.false;
+        expect(themeToggle.textContent).to.equal('🌙');
 
-        // Icon should be moon
+        // Click 1: Toggle to light mode
+        themeToggle.click();
+        expect(body.classList.contains('light-mode')).to.be.true;
+        expect(themeToggle.textContent).to.equal('☀️');
+
+        // Click 2: Toggle back to dark mode
+        themeToggle.click();
+        expect(body.classList.contains('light-mode')).to.be.false;
         expect(themeToggle.textContent).to.equal('🌙');
     });
 });
