@@ -20,6 +20,13 @@ describe('Performance Optimization', () => {
     expect(aboutImage.getAttribute('loading')).to.equal('lazy');
   });
 
+  it('should have a poster on the background video', () => {
+    const video = document.querySelector('video#bg-video');
+    expect(video, 'Background video should exist').to.not.be.null;
+    expect(video.getAttribute('poster'), 'Background video should have a poster attribute for faster perceived load time').to.not.be.null;
+    expect(video.getAttribute('poster')).to.equal('images/flying-through-clouds-poster.jpg');
+  });
+
   it('should not block rendering with Font Awesome', () => {
     // Check that there is no blocking stylesheet link for Font Awesome outside of noscript
     const links = document.querySelectorAll('link[rel="stylesheet"][href*="font-awesome"]');
