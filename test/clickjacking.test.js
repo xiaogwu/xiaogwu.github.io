@@ -58,7 +58,8 @@ describe('Clickjacking Protection', function() {
         await page.waitForURL((url) => url.toString().startsWith(`http://localhost:${portVictim}`), { timeout: 2000 });
         console.log('Redirected to victim URL (Frame busting worked)');
         return;
-    } catch (e) {
+    } catch (err) {
+            console.error(err);
         console.log('No redirect detected.');
     }
 
@@ -73,7 +74,7 @@ describe('Clickjacking Protection', function() {
         if (text.includes('Sean Wu')) {
              expect.fail('Clickjacking successful: Content loaded in iframe');
         }
-    } catch (e) {
+    } catch(e) {
         if (e.message.includes('Clickjacking successful')) throw e;
         // If timeout, it implies content didn't load (Safe via CSP/Frame Busting)
     }

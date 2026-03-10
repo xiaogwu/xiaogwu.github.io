@@ -150,12 +150,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (backToTopButton) {
         const footer = document.querySelector('footer');
 
-        // Optimization: Use IntersectionObserver to avoid scroll event listeners and layout thrashing
-        if ('IntersectionObserver' in window) {
+        if (typeof IntersectionObserver !== 'undefined') {
+            // Use IntersectionObserver for better performance (avoids layout thrashing on scroll)
             let scrolledPastThreshold = false;
             let footerVisible = false;
 
-            const updateButton = () => {
+            const updateButtonVisibility = () => {
                 if (scrolledPastThreshold && !footerVisible) {
                     backToTopButton.classList.add('visible');
                 } else {
@@ -163,41 +163,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             };
 
-            // Sentinel for top threshold (SCROLL_THRESHOLD)
             const sentinel = document.createElement('div');
-            Object.assign(sentinel.style, {
-                position: 'absolute',
-                top: '0',
-                left: '0',
-                width: '1px',
-                height: `${SCROLL_THRESHOLD}px`,
-                pointerEvents: 'none',
-                visibility: 'hidden',
-                zIndex: '-1'
-            });
+            sentinel.style.position = 'absolute';
+            sentinel.style.top = '0';
+            sentinel.style.left = '0';
+            sentinel.style.width = '1px';
+            sentinel.style.height = `${SCROLL_THRESHOLD}px`;
+            sentinel.style.pointerEvents = 'none';
+            sentinel.style.visibility = 'hidden';
+            sentinel.style.zIndex = '-1';
             document.body.prepend(sentinel);
 
-            const sentinelObserver = new IntersectionObserver((entries) => {
+            const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    // If sentinel is NOT intersecting, we are past SCROLL_THRESHOLD
-                    scrolledPastThreshold = !entry.isIntersecting;
-                    updateButton();
-                });
-            });
-            sentinelObserver.observe(sentinel);
-
-            // Footer observer
-            if (footer) {
-                const footerObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
+                    if (entry.target === sentinel) {
+                        scrolledPastThreshold = !entry.isIntersecting;
+                    } else if (entry.target === footer) {
                         footerVisible = entry.isIntersecting;
-                        updateButton();
-                    });
+                    }
                 });
-                footerObserver.observe(footer);
+                updateButtonVisibility();
+            }, { root: null, threshold: 0 });
+
+            observer.observe(sentinel);
+            if (footer) {
+                observer.observe(footer);
             }
         } else {
-            // Fallback for older browsers
+            // Fallback for environments without IntersectionObserver
             const toggleBackToTop = () => {
                 const scrolledPastThreshold = window.scrollY > SCROLL_THRESHOLD;
                 const footerVisible = footer && (window.innerHeight + window.scrollY) >= footer.offsetTop;
