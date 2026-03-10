@@ -2,13 +2,12 @@
 import asyncio
 from playwright.async_api import async_playwright
 import subprocess
-import time
 
 async def run():
     # Start the server
     server_process = subprocess.Popen(["npx", "serve", "-l", "8081"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     # Wait for server to start
-    time.sleep(2)
+    await asyncio.sleep(2)
 
     try:
         async with async_playwright() as p:
