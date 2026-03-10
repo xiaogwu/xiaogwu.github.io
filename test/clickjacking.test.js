@@ -74,7 +74,7 @@ describe('Clickjacking Protection', function() {
         if (text.includes('Sean Wu')) {
              expect.fail('Clickjacking successful: Content loaded in iframe');
         }
-    } catch (e) {
+    } catch(e) {
         if (e.message.includes('Clickjacking successful')) throw e;
         // If timeout, it implies content didn't load (Safe via CSP/Frame Busting)
     }
