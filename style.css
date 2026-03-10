@@ -653,3 +653,13 @@ footer {
     outline: 2px solid var(--text-color);
     outline-offset: 4px;
 }
+
+/* Accessibility enhancements */
+a:focus-visible,
+button:focus-visible,
+select:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 4px;
+    border-radius: 2px;
+}

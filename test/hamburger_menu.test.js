@@ -16,6 +16,7 @@ describe('Hamburger Menu', () => {
     html = fs.readFileSync(path.resolve(__dirname, '../index.html'), 'utf8');
     // Remove CSP to allow inline script injection for testing
     html = html.replace(/<meta http-equiv="Content-Security-Policy"[^>]*>/, '');
+    html = html.replace('<script src="script.js"></script>', '');
     html = html.replace(/<link.*?>/g, ''); // Remove external links to avoid ECONNREFUSED in tests
     scriptContent = fs.readFileSync(path.resolve(__dirname, '../script.js'), 'utf8');
   });
