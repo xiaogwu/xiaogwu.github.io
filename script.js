@@ -82,11 +82,14 @@ document.addEventListener('DOMContentLoaded', () => {
             hamburger.setAttribute("aria-expanded", expanded);
         });
 
-        document.querySelectorAll(".nav-links li a").forEach(n => n.addEventListener("click", () => {
-            hamburger.classList.remove("active");
-            navLinks.classList.remove("active");
-            hamburger.setAttribute("aria-expanded", "false");
-        }));
+        // Optimization: Use event delegation for nav links
+        navLinks.addEventListener("click", (e) => {
+            if (e.target.closest('a')) {
+                hamburger.classList.remove("active");
+                navLinks.classList.remove("active");
+                hamburger.setAttribute("aria-expanded", "false");
+            }
+        });
     }
 
     // Typography Switcher Logic
