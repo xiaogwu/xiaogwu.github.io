@@ -42,6 +42,9 @@ describe('Back to Top Button', () => {
     window = dom.window;
     document = window.document;
 
+    // Mock requestAnimationFrame to execute synchronously
+    window.requestAnimationFrame = (callback) => { callback(); return 1; };
+
     // Mock scrollTo
     window.scrollTo = () => {};
 
