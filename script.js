@@ -194,15 +194,22 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } else {
             // Fallback for environments without IntersectionObserver
+            let isThrottled = false;
             const toggleBackToTop = () => {
-                const scrolledPastThreshold = window.scrollY > SCROLL_THRESHOLD;
-                const footerVisible = footer && (window.innerHeight + window.scrollY) >= footer.offsetTop;
+                if (isThrottled) return;
+                isThrottled = true;
 
-                if (scrolledPastThreshold && !footerVisible) {
-                    backToTopButton.classList.add('visible');
-                } else {
-                    backToTopButton.classList.remove('visible');
-                }
+                requestAnimationFrame(() => {
+                    const scrolledPastThreshold = window.scrollY > SCROLL_THRESHOLD;
+                    const footerVisible = footer && (window.innerHeight + window.scrollY) >= footer.offsetTop;
+
+                    if (scrolledPastThreshold && !footerVisible) {
+                        backToTopButton.classList.add('visible');
+                    } else {
+                        backToTopButton.classList.remove('visible');
+                    }
+                    isThrottled = false;
+                });
             };
 
             window.addEventListener('scroll', toggleBackToTop);
