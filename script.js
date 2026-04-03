@@ -17,24 +17,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // Smooth scrolling for navigation links
     document.addEventListener('click', function (e) {
         const anchor = e.target.closest('a[href^="#"]');
-        if (anchor) {
-            const targetId = anchor.getAttribute('href');
+        if (!anchor) return;
 
-            // Only hijack click if it's an internal link
-            if (targetId && targetId.startsWith('#')) {
-                e.preventDefault();
+        const targetId = anchor.getAttribute('href');
 
-                const id = targetId.substring(1);
-                // Use getElementById for security (avoid selector injection) and robustness
-                const targetElement = id ? document.getElementById(id) : null;
+        // Only hijack click if it's an internal link
+        if (!targetId || !targetId.startsWith('#')) return;
 
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            }
-        }
+        e.preventDefault();
+
+        const id = targetId.substring(1);
+        // Use getElementById for security (avoid selector injection) and robustness
+        const targetElement = id ? document.getElementById(id) : null;
+
+        if (!targetElement) return;
+
+        targetElement.scrollIntoView({
+            behavior: 'smooth'
+        });
     });
 
     // Theme Toggle Logic

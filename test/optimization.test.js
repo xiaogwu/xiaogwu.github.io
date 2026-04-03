@@ -91,7 +91,7 @@ describe('Optimization Logic', () => {
     it('should activate Google Fonts immediately', () => {
         try {
             vm.runInContext(scriptContent, context);
-        } catch (e) {
+        } catch {
             // Ignore execution errors from later parts of the script
         }
         assert.strictEqual(mockElements['google-fonts-css'].rel, 'stylesheet', 'Google Fonts should be activated immediately');
@@ -100,7 +100,7 @@ describe('Optimization Logic', () => {
     it('should defer Font Awesome activation until DOMContentLoaded', () => {
         try {
             vm.runInContext(scriptContent, context);
-        } catch (e) {
+        } catch {
             // Ignore
         }
 
