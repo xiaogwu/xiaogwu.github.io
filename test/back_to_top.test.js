@@ -50,6 +50,11 @@ describe('Back to Top Button', () => {
     Object.defineProperty(window, 'scrollY', { value: 0, writable: true });
     Object.defineProperty(window, 'innerHeight', { value: 800, writable: true });
 
+    // Mock requestAnimationFrame to run synchronously for testing
+    window.requestAnimationFrame = (callback) => {
+      callback();
+    };
+
     // Execute script
     const scriptEl = document.createElement('script');
     scriptEl.textContent = scriptContent;

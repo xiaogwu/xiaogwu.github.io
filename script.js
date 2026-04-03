@@ -209,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 requestAnimationFrame(() => {
                     const scrolledPastThreshold = window.scrollY > SCROLL_THRESHOLD;
-                    const footerVisible = footer && (window.innerHeight + window.scrollY) >= footer.offsetTop;
+                    const footerVisible = scrolledPastThreshold && footer && (window.innerHeight + window.scrollY) >= footer.offsetTop;
 
                     if (scrolledPastThreshold && !footerVisible) {
                         backToTopButton.classList.add('visible');
