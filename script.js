@@ -97,8 +97,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (typographySelect) {
         const TYPOGRAPHY_STORAGE_KEY = 'typography-preference';
+        const ALLOWED_TYPOGRAPHIES = ['system', 'modern', 'classic', 'tech'];
+
         const savedTypography = localStorage.getItem(TYPOGRAPHY_STORAGE_KEY);
-        const initialTypography = savedTypography || 'modern';
+        // Validate saved preference against whitelist, default to 'modern' if invalid
+        const initialTypography = ALLOWED_TYPOGRAPHIES.includes(savedTypography) ? savedTypography : 'modern';
 
         // Apply initial typography
         typographySelect.value = initialTypography;
@@ -108,6 +111,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         typographySelect.addEventListener('change', (e) => {
             const selectedTheme = e.target.value;
+
+            // Validate the selected theme before proceeding
+            if (!ALLOWED_TYPOGRAPHIES.includes(selectedTheme)) {
+                return;
+            }
 
             // Save preference
             localStorage.setItem(TYPOGRAPHY_STORAGE_KEY, selectedTheme);
